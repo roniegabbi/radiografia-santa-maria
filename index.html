@@ -123,10 +123,12 @@
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);transition:.3s}
   .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#C9DCEE}
+  .metric{display:flex;flex-direction:column;height:100%}
   .metric .num{font-family:'Sora';font-weight:800;font-size:42px;background:linear-gradient(120deg,var(--blue),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
   .metric .title{font-weight:600;margin-top:10px;font-size:15px}
-  .metric .src{margin-top:10px;font-size:12px;color:var(--muted)}
+  .metric .src{margin-top:auto;padding-top:10px;font-size:12px;color:var(--muted)}
   .chip{display:inline-block;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;margin-bottom:12px}
+  .chip.ph{visibility:hidden}
   .chip.up{background:#E4F7EE;color:#0a8a59}
   .chip.down{background:#FDEAEA;color:#c0392b}
   .chip.gold{background:#FBF1D8;color:#9c7415}
@@ -518,9 +520,9 @@
       <p>74,2 mil vínculos ativos e saldo positivo no 1º trimestre de 2026. <strong>Fonte automatizável: Novo CAGED/MTE (mensal).</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><div class="num" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Empregos formais</div><div class="src">Caravela/CAGED · 2025</div></div>
-      <div class="card metric reveal"><span class="chip up">+704</span><div class="num">1T26</div><div class="title">Saldo líquido de vagas</div><div class="src">8.893 adm. · 8.189 deslig.</div></div>
-      <div class="card metric reveal"><div class="num" data-count="724">0</div><div class="title">Saldo em Serviços</div><div class="src">76,2% da geração total</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Empregos formais</div><div class="src">Caravela/CAGED · 2025</div></div>
+      <div class="card metric reveal"><span class="chip up">alta</span><div class="num">+704</div><div class="title">Saldo de vagas · 1º tri/2026</div><div class="src">8.893 admissões · 8.189 desligamentos</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="724">0</div><div class="title">Saldo em Serviços</div><div class="src">76,2% da geração total</div></div>
       <div class="card metric reveal"><span class="chip down">−246</span><div class="num">Comércio</div><div class="title">Único setor em déficit</div><div class="src">Ponto de atenção · CAGED</div></div>
     </div>
 
