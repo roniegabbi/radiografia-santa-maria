@@ -91,7 +91,7 @@
   .pcard{border-radius:18px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.18);
     box-shadow:0 18px 44px rgba(0,0,0,.28);display:flex;align-items:flex-end;padding:14px;color:#fff;
     font-size:12.5px;font-weight:700;animation:floaty 7s ease-in-out infinite}
-  .pcard span{position:relative;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+  .pcard span{display:none}
   .pcard::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.5))}
   .pcard svg{position:absolute;top:12px;left:12px;width:22px;height:22px;opacity:.9;z-index:2}
   .pcard.tall{grid-row:span 2}
@@ -616,13 +616,13 @@
     <div class="ch-head reveal">
       <span class="ch-tag"><span class="bar"></span>A cidade em movimento</span>
       <h2>Galeria oficial</h2>
-      <p>Fotos e vídeos gerenciados pela SMDEI no painel admin — eventos, obras e o ecossistema de inovação. (Placeholders no protótipo.)</p>
+      <p>Fotos e vídeos gerenciados pela SMDEI no painel admin.</p>
     </div>
-    <div class="media-strip reveal">
-      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg>Santa Summit</div>
-      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>Vídeo · Feisma</div>
-      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg>InovaTec UFSM</div>
-      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg>Centro histórico</div>
+    <div class="media-strip reveal" id="galeriaStrip">
+      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg><span>Santa Summit</span></div>
+      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Vídeo · Feisma</span></div>
+      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg><span>InovaTec UFSM</span></div>
+      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg><span>Centro histórico</span></div>
     </div>
   </div>
 </section>
@@ -701,6 +701,7 @@
               <option value="hero_mosaico">Foto da capa — mosaico (posições 1 a 6)</option>
               <option value="xis_logo">Logo da Cidade do Xis</option>
               <option value="xis_feed">Galeria Cidade do Xis (foto ou vídeo)</option>
+              <option value="galeria">Galeria oficial — "A cidade em movimento" (posições 1 a 4)</option>
             </select>
           </label>
           <label id="upPosWrap" style="display:none;flex-direction:column;gap:5px;font-size:12px;color:#B79BD0;font-weight:700">Posição (1 a 6)
@@ -850,6 +851,9 @@ async function loadMidia(){
     } else if(r.colecao==='xis_feed'){
       const feed=document.getElementById('xisFeed');
       if(feed){const ph=feed.querySelectorAll('.ph')[(r.ordem||1)-1];setMedia(ph,r.url_publica,r.titulo);}
+    } else if(r.colecao==='galeria'){
+      const g=document.getElementById('galeriaStrip');
+      if(g){const ph=g.querySelectorAll('.ph')[(r.ordem||1)-1];setMedia(ph,r.url_publica,r.titulo);}
     } else if(r.colecao==='prefeitura_logo'){
       setLogo(document.getElementById('brandCrest'),r.url_publica);
       setLogo(document.getElementById('footCrest'),r.url_publica);
@@ -891,7 +895,7 @@ const EDITAVEIS={
   exportacoes:{nome:'Exportações (US$ mi)',order:'ordem',cols:[['produto','Produto','text'],['valor_milhoes','US$ milhões','number']]},
   seguranca_serie:{nome:'Segurança · homicídios por ano',order:'ano',cols:[['ano','Ano','number'],['homicidios','Homicídios','number']]},
   custo_vida:{nome:'Custo de vida (R$)',order:'ordem',cols:[['cidade','Cidade','text'],['valor','Valor R$','number']]},
-  midia:{nome:'Fotos · links das imagens',order:'ordem',cols:[['titulo','Legenda','text'],['url_publica','Link da imagem (URL)','text']]}
+  midia:{nome:'Fotos da capa, galeria e logos (posição + legenda)',order:'colecao',cols:[['colecao','Onde aparece','ro'],['ordem','Posição','number'],['titulo','Legenda','text']]}
 };
 
 function admMsg(id,txt,ok){const e=document.getElementById(id);if(e){e.textContent=txt;e.style.color=ok?'#58B947':'#E6188D';}}
@@ -926,12 +930,17 @@ async function admCarregar(){
   box.innerHTML='<div style="color:#B79BD0;font-size:13px">Carregando…</div>';
   const rows=await sbRows(tabela,cfg.order);
   if(!rows){box.innerHTML='<div style="color:#E6188D;font-size:13px">Nada encontrado (ou sem conexão).</div>';return;}
-  let html='<div style="display:flex;gap:8px;font-size:11px;color:#B79BD0;font-weight:700;text-transform:uppercase;margin-bottom:4px"><span style="flex:2">'+cfg.cols[0][1]+'</span><span style="flex:1">'+cfg.cols[1][1]+'</span></div>';
+  const wt=c=>c[2]==='number'?1:2;
+  let html='<div style="display:flex;gap:8px;font-size:11px;color:#B79BD0;font-weight:700;text-transform:uppercase;margin-bottom:4px">';
+  cfg.cols.forEach(c=>{html+='<span style="flex:'+wt(c)+'">'+c[1]+'</span>';});
+  html+='</div>';
   rows.forEach(r=>{
     html+='<div data-id="'+r.id+'" style="display:flex;gap:8px;margin-bottom:6px">';
-    cfg.cols.forEach((c,i)=>{
+    cfg.cols.forEach(c=>{
       const val=r[c[0]]==null?'':String(r[c[0]]).replace(/"/g,'&quot;');
-      html+='<input data-col="'+c[0]+'" type="'+c[2]+'" value="'+val+'" style="flex:'+(i===0?2:1)+';padding:9px 11px;border-radius:9px;border:1px solid var(--line);font-size:13px;color:var(--ink)">';
+      const ro=c[2]==='ro';
+      const cor=ro?'color:#9484A6;background:#F4EFFA':'color:var(--ink)';
+      html+='<input data-col="'+c[0]+'"'+(ro?' data-ro="1" readonly':'')+' type="'+(c[2]==='number'?'number':'text')+'" value="'+val+'" style="flex:'+wt(c)+';padding:9px 11px;border-radius:9px;border:1px solid var(--line);font-size:13px;'+cor+'">';
     });
     html+='</div>';
   });
@@ -947,6 +956,7 @@ async function admSalvar(){
   for(const row of rows){
     const id=row.getAttribute('data-id');const upd={};
     row.querySelectorAll('input').forEach(inp=>{
+      if(inp.getAttribute('data-ro'))return;
       const col=inp.getAttribute('data-col');let v=inp.value;
       if(inp.type==='number')v=v===''?null:Number(v);
       upd[col]=v;
