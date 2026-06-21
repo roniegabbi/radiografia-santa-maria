@@ -43,17 +43,21 @@
   /* ===== Header / Nav ===== */
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);
     background:rgba(61,26,91,.86);border-bottom:1px solid rgba(255,255,255,.08);transition:.3s}
-  .nav{display:flex;align-items:center;gap:18px;height:68px}
-  .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:700}
-  .brand .crest{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-    background:linear-gradient(135deg,#E6188D,#F7901E 35%,#FCC700 55%,#58B947 78%,#1F9BD4);font-family:'Sora';font-weight:800;font-size:15px;box-shadow:0 4px 14px rgba(230,24,141,.4)}
-  .brand small{display:block;font-size:11px;font-weight:500;color:#C9B3DD;letter-spacing:.04em}
-  .nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-  .nav-links a{color:#E2D2F0;font-size:13.5px;font-weight:500;padding:8px 12px;border-radius:9px;transition:.2s}
+  .nav{display:flex;align-items:center;gap:16px;height:72px}
+  .brand{display:flex;align-items:center;gap:13px;color:#fff;font-weight:700;flex-shrink:0}
+  .brand .crest{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;overflow:hidden;flex-shrink:0;
+    background:linear-gradient(135deg,#E6188D,#F7901E 35%,#FCC700 55%,#58B947 78%,#1F9BD4);font-family:'Sora';font-weight:800;font-size:17px;box-shadow:0 4px 14px rgba(230,24,141,.4)}
+  .brand .brand-txt{display:flex;flex-direction:column;justify-content:center;line-height:1.12;white-space:nowrap}
+  .brand .brand-txt b{font-family:'Sora';font-size:16px;font-weight:700;letter-spacing:.01em}
+  .brand small{display:block;font-size:11px;font-weight:500;color:#C9B3DD;letter-spacing:.04em;margin-top:2px}
+  .nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:nowrap;align-items:center}
+  .nav-links a{color:#E2D2F0;font-size:13px;font-weight:500;padding:8px 11px;border-radius:9px;transition:.2s;white-space:nowrap}
   .nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
   .btn-admin{background:linear-gradient(135deg,var(--magenta),var(--orange));color:#fff !important;font-weight:600;
     padding:9px 16px !important;border-radius:10px !important;box-shadow:0 6px 18px rgba(230,24,141,.35)}
   .btn-admin:hover{transform:translateY(-1px)}
+  @media(max-width:1120px){.nav-links a{font-size:12px;padding:7px 8px}.nav-links{gap:1px}}
+  @media(max-width:940px){.nav-links{display:none}.nav{justify-content:space-between}.btn-admin{margin-left:auto}}
 
   /* ===== Hero ===== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;
@@ -249,7 +253,7 @@
   <div class="wrap nav">
     <div class="brand">
       <div class="crest" id="brandCrest">♥</div>
-      <div>Radiografia de Santa Maria<small>SMDEI · Prefeitura de Santa Maria</small></div>
+      <div class="brand-txt"><b>Radiografia de Santa Maria</b><small>SMDEI · Prefeitura de Santa Maria</small></div>
     </div>
     <nav class="nav-links">
       <a href="#inovacao">Inovação</a>
