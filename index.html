@@ -257,9 +257,28 @@
 
   @media(max-width:880px){
     .nav-links{display:none}
-    .g4,.g3,.g2,.hero-stats,.admin-grid,.media-strip,.thumbs,.foot-cols{grid-template-columns:repeat(2,1fr)}
+    .g4,.g3,.g2,.hero-stats,.admin-grid,.media-strip,.thumbs,.foot-cols,.ministat,.trilha{grid-template-columns:repeat(2,1fr)}
     .hero-stats{gap:12px}
     .media-strip{grid-template-columns:repeat(2,1fr)}
+    .trilha .step::after{display:none}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 16px}
+    .nav{height:88px;gap:12px}
+    .brand{gap:12px}
+    .brand .crest{width:58px;height:58px;border-radius:14px}
+    header.shrink .nav{height:74px}
+    header.shrink .brand .crest{width:50px;height:50px}
+    .brand .brand-txt{white-space:normal}
+    .brand .brand-txt b{font-size:15px}
+    .brand small{font-size:10.5px}
+    .hero-inner{padding-top:120px}
+    .hero h1{overflow-wrap:break-word;hyphens:auto}
+    .g4,.g3,.g2,.hero-stats,.ministat,.trilha,.foot-cols,.media-strip,.xis-feed{grid-template-columns:1fr}
+    .eco-cta{padding:24px}
+    .eco-cta .go{margin-left:0;width:100%;justify-content:center}
+    .share-card{padding:22px 18px}
+    .share-lbl{width:100%;text-align:center;margin-right:0}
   }
 </style>
 </head>
