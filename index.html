@@ -512,7 +512,7 @@
       </div>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
         <span style="font-weight:700;color:var(--ink);font-size:14px">Nos siga nas redes</span>
-        <a href="https://www.instagram.com/festivalnacionaldoxis/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF);color:#fff;font-weight:700;font-size:13px;text-decoration:none">
+        <a href="https://www.instagram.com/festivalnacionaldoxis/" target="_blank" rel="noopener" onclick="igOpen(event,'festivalnacionaldoxis')" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF);color:#fff;font-weight:700;font-size:13px;text-decoration:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:18px;height:18px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
           @festivalnacionaldoxis
         </a>
@@ -920,6 +920,21 @@ async function loadMidia(){
   });
 }
 loadMidia();
+
+/* Abre o perfil no app do Instagram (se instalado); senão, no navegador */
+function igOpen(e,user){
+  const web='https://www.instagram.com/'+user+'/';
+  const ua=navigator.userAgent||'';
+  const isMobile=/iPhone|iPad|iPod|Android/i.test(ua);
+  if(!isMobile)return; // desktop: deixa o link normal abrir em nova aba
+  e.preventDefault();
+  const app='instagram://user?username='+user;
+  let saiu=false;
+  const onHide=()=>{saiu=true;};
+  document.addEventListener('visibilitychange',onHide,{once:true});
+  const t=setTimeout(()=>{ if(!saiu)window.location.href=web; },1200);
+  window.location.href=app;
+}
 
 /* Compartilhar */
 (function(){
