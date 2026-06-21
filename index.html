@@ -844,7 +844,9 @@ async function loadMidia(){
       setBg(el,r.url_publica); if(el&&r.titulo){const s=el.querySelector('span');if(s){s.textContent=r.titulo;s.style.opacity='1';}}
     } else if(r.colecao==='xis_logo'){
       const lg=document.getElementById('xisLogo');
-      if(lg){lg.style.padding='0';lg.style.border='none';setBg(lg,r.url_publica);}
+      if(lg){lg.style.border='none';lg.style.padding='14px';lg.style.background='#fff';
+        lg.querySelectorAll('.badge,b,span,.up').forEach(n=>n.style.display='none');
+        lg.style.backgroundImage='url("'+r.url_publica+'")';lg.style.backgroundSize='contain';lg.style.backgroundRepeat='no-repeat';lg.style.backgroundPosition='center';}
     } else if(r.colecao==='xis_feed'){
       const feed=document.getElementById('xisFeed');
       if(feed){const ph=feed.querySelectorAll('.ph')[(r.ordem||1)-1];setMedia(ph,r.url_publica,r.titulo);}
