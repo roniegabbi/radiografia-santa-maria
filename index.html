@@ -44,17 +44,20 @@
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);
     background:rgba(255,255,255,.94);border-bottom:1px solid rgba(61,26,91,.10);box-shadow:0 2px 14px rgba(61,26,91,.07);transition:.3s}
   header .wrap{max-width:1340px}
-  .nav{display:flex;align-items:center;gap:18px;height:180px;transition:height .3s}
-  header.shrink .nav{height:96px}
-  header.shrink .brand .crest{width:80px;height:80px}
-  .brand{display:flex;align-items:center;gap:20px;color:var(--navy);font-weight:700;flex-shrink:0}
-  .brand .crest{width:168px;height:168px;border-radius:22px;display:grid;place-items:center;overflow:hidden;flex-shrink:0;transition:.3s;
+  .nav{display:flex;flex-direction:column;gap:10px;padding:16px 0;transition:padding .3s}
+  header.shrink .nav{padding:9px 0;gap:8px}
+  .nav-top{display:flex;align-items:center;gap:18px;width:100%}
+  header.shrink .brand .crest{width:64px;height:64px}
+  .brand{display:flex;align-items:center;gap:18px;color:var(--navy);font-weight:700;flex-shrink:0}
+  .brand .crest{width:104px;height:104px;border-radius:20px;display:grid;place-items:center;overflow:hidden;flex-shrink:0;transition:.3s;
     background:linear-gradient(135deg,#E6188D,#F7901E 35%,#FCC700 55%,#58B947 78%,#1F9BD4);font-family:'Sora';font-weight:800;font-size:22px;color:#fff;box-shadow:0 4px 14px rgba(230,24,141,.4)}
   .brand .crest.has-logo{background:transparent;box-shadow:none;border-radius:10px}
   .brand .brand-txt{display:flex;flex-direction:column;justify-content:center;line-height:1.14;white-space:nowrap}
   .brand .brand-txt b{font-family:'Sora';font-size:19px;font-weight:700;letter-spacing:.01em;color:var(--navy)}
   .brand small{display:block;font-size:12px;font-weight:500;color:#7A6790;letter-spacing:.04em;margin-top:3px}
-  .nav-links{display:flex;gap:1px;margin-left:auto;flex-wrap:nowrap;align-items:center}
+  .nav-links{display:flex;gap:2px;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;
+    border-top:1px solid rgba(61,26,91,.07);padding-top:9px}
+  header.shrink .nav-links{padding-top:7px}
   .nav-links a{color:#4A3563;font-size:12.5px;font-weight:600;padding:7px 9px;border-radius:9px;transition:.2s;white-space:nowrap}
   .nav-links a:hover{background:rgba(138,42,174,.10);color:var(--blue)}
   .btn-admin{background:linear-gradient(135deg,var(--magenta),var(--orange));color:#fff !important;font-weight:600;
@@ -130,6 +133,7 @@
   .ch-head p{margin-top:14px;color:var(--muted);font-size:17px}
 
   .grid{display:grid;gap:20px}
+  .g5{grid-template-columns:repeat(5,1fr)}
   .g4{grid-template-columns:repeat(4,1fr)}
   .g3{grid-template-columns:repeat(3,1fr)}
   .g2{grid-template-columns:repeat(2,1fr)}
@@ -270,7 +274,7 @@
   .demo-note{background:rgba(230,178,58,.12);border:1px solid rgba(230,178,58,.3);color:#f0c869;font-size:12px;padding:9px 14px;border-radius:10px;margin-bottom:22px}
 
   @media(max-width:880px){
-    .g4,.g3,.g2,.hero-stats,.admin-grid,.media-strip,.thumbs,.foot-cols,.ministat,.trilha{grid-template-columns:repeat(2,1fr)}
+    .g5,.g4,.g3,.g2,.hero-stats,.admin-grid,.media-strip,.thumbs,.foot-cols,.ministat,.trilha{grid-template-columns:repeat(2,1fr)}
     .hero-stats{gap:12px}
     .media-strip{grid-template-columns:repeat(2,1fr)}
     .trilha .step::after{display:none}
@@ -287,7 +291,7 @@
     .brand small{font-size:10.5px}
     .hero-inner{padding-top:120px}
     .hero h1{overflow-wrap:break-word;hyphens:auto}
-    .g4,.g3,.g2,.hero-stats,.ministat,.trilha,.foot-cols,.media-strip,.xis-feed{grid-template-columns:1fr}
+    .g5,.g4,.g3,.g2,.hero-stats,.ministat,.trilha,.foot-cols,.media-strip,.xis-feed{grid-template-columns:1fr}
     .eco-cta{padding:24px}
     .eco-cta .go{margin-left:0;width:100%;justify-content:center}
     .share-card{padding:22px 18px}
@@ -300,11 +304,13 @@
 <!-- ===== HEADER ===== -->
 <header>
   <div class="wrap nav">
-    <div class="brand">
-      <div class="crest" id="brandCrest">♥</div>
-      <div class="brand-txt"><b>Radiografia de Santa Maria</b><small>SMDEI · Prefeitura de Santa Maria</small></div>
+    <div class="nav-top">
+      <div class="brand">
+        <div class="crest" id="brandCrest">♥</div>
+        <div class="brand-txt"><b>Radiografia de Santa Maria</b><small>SMDEI · Prefeitura de Santa Maria</small></div>
+      </div>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleNav(this)">☰</button>
     </div>
-    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleNav(this)">☰</button>
     <nav class="nav-links">
       <a href="#inovacao">Inovação</a>
       <a href="#economia">Economia</a>
@@ -317,6 +323,7 @@
       <a href="#mobilidade">Mobilidade</a>
       <a href="#educacao">Educação</a>
       <a href="#militar">Cidade-Quartel</a>
+      <a href="#turismo">Turismo</a>
       <a href="#" class="btn-admin" onclick="openAdmin(event)">Painel Admin</a>
     </nav>
   </div>
@@ -881,7 +888,7 @@
         <span class="tagchip">2º Batalhão de Polícia de Choque (BM)</span>
         <span class="tagchip">Guarnição de Itaara (integrada)</span>
       </div>
-      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Lista ilustrativa. A guarnição do Exército reúne ~22 OMs; a Base Aérea (FAB) e a Brigada Militar (polícia estadual) somam-se à presença militar. O efetivo da Brigada Militar por município não é divulgado. Fonte: Exército / FAB / Brigada Militar.</p>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Principais unidades militares. A guarnição do Exército reúne ~22 OMs; a Base Aérea (FAB) e a Brigada Militar (polícia estadual) somam-se à presença militar. O efetivo da Brigada Militar por município não é divulgado. Fonte: Exército / FAB / Brigada Militar.</p>
     </div>
 
     <div class="panel reveal" style="margin-top:22px">
@@ -895,6 +902,176 @@
         <br><br>
         <strong>Próxima camada de dados:</strong> efetivo oficial por OM, folha de pagamento militar no município e impacto no PIB de serviços — quando houver fonte pública consolidada.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TURISMO ===== -->
+<section class="chapter" id="turismo">
+  <div class="wrap">
+    <div class="ch-head reveal">
+      <span class="ch-tag"><span class="bar"></span>Capítulo 11 · Turismo</span>
+      <h2>Uma cidade que recebe milhões ao longo do ano</h2>
+      <p>Santa Maria, a <strong>"Cidade Coração do Rio Grande"</strong>, combina turismo <strong>religioso</strong>, <strong>tradicionalista gaúcho</strong>, <strong>esportivo</strong>, de <strong>eventos</strong>, <strong>gastronômico</strong> e <strong>paleontológico</strong>. É o <strong>berço mundial da Campanha da Mãe Peregrina</strong> (Diácono João Luiz Pozzobon · Santuário de Schoenstatt), hoje em mais de 100 países. O maior fluxo presencial é a <strong>Romaria da Medianeira</strong> (~250 mil fiéis, estimativa de segurança). Cada número abaixo traz a sua <strong>fonte</strong> e, quando se trata de público, é uma <strong>estimativa não-censitária</strong>. <strong>Fontes: PMSM / Sec. de Turismo e Desenvolvimento Rural · Guarda Municipal · Arquidiocese de Santa Maria · Campanha da Mãe Peregrina de Schoenstatt · Maratona Internacional de Santa Maria · 13ª Região Tradicionalista (MTG) · UFSM/CAPPA · ACI Digital.</strong></p>
+    </div>
+    <div class="grid g5">
+      <div class="card metric reveal"><span class="chip up">religioso</span><div class="num" data-count="250" data-prefix="~" data-suffix=" mil">0</div><div class="title">Romaria da Medianeira</div><div class="src">82ª ed. (2024) · estimativa PMSM/segurança · ACI Digital</div></div>
+      <div class="card metric reveal"><span class="chip gold">rural · gastronômico</span><div class="num" data-count="50" data-prefix="+" >0</div><div class="title">Pátio Rural · expositores</div><div class="src">22ª ed. (2025) · Sec. Turismo + Desenv. Rural (PMSM)</div></div>
+      <div class="card metric reveal"><span class="chip gold">tradicionalista</span><div class="num" data-count="65" data-prefix="~" data-suffix=" mil">0</div><div class="title">Acampamento Farroupilha</div><div class="src">Estimativa · ~25 piquetes · 13ª Região Tradicionalista</div></div>
+      <div class="card metric reveal"><span class="chip up">eventos</span><div class="num" data-count="80" data-prefix="+" data-suffix=" mil">0</div><div class="title">Festival de Balonismo · 4 dias</div><div class="src">abr/2025 · estimativa Guarda Municipal (PMSM)</div></div>
+      <div class="card metric reveal"><span class="chip up">esportivo</span><div class="num" data-count="3.5" data-dec="1" data-suffix=" mil">0</div><div class="title">Maratona Internacional</div><div class="src">3ª ed. (2025) · 15 estados + 4 países · 144 cidades</div></div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>Público dos principais eventos turísticos</h3>
+        <div class="sub">Estimativas de público · edições mais recentes</div>
+        <div class="chart-box"><canvas id="turismoChart"></canvas></div>
+      </div>
+      <div class="panel reveal">
+        <h3>Os segmentos do turismo santa-mariense</h3>
+        <div class="sub">Vocações já consolidadas e em crescimento</div>
+        <div class="barrow"><div class="top"><span>Religioso · Romaria da Medianeira (Basílica)</span><span>~250 mil</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+        <div class="barrow"><div class="top"><span>Religioso · Schoenstatt / Mãe Peregrina (Diácono Pozzobon)</span><span>100+ países</span></div><div class="track"><div class="fill" data-w="62"></div></div></div>
+        <div class="barrow"><div class="top"><span>Tradicionalista (Acampamento Farroupilha)</span><span>~65 mil</span></div><div class="track"><div class="fill" data-w="46"></div></div></div>
+        <div class="barrow"><div class="top"><span>Eventos / festivais (Balonismo)</span><span>+80 mil</span></div><div class="track"><div class="fill" data-w="36"></div></div></div>
+        <div class="barrow"><div class="top"><span>Rural / gastronômico (Pátio Rural)</span><span>50+ expositores</span></div><div class="track"><div class="fill" data-w="26"></div></div></div>
+        <div class="barrow"><div class="top"><span>Esportivo (corridas de rua/ano)</span><span>+12 mil</span></div><div class="track"><div class="fill" data-w="22"></div></div></div>
+        <div class="barrow"><div class="top"><span>Paleontológico (Rota · CAPPA)</span><span>300 km de roteiro</span></div><div class="track"><div class="fill" data-w="16"></div></div></div>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted)">As duas vertentes religiosas são contabilizadas <strong>separadamente</strong>: a Romaria da Medianeira pelo público presencial (~250 mil fiéis, estimativa de segurança/PMSM) e o Santuário de Schoenstatt / Mãe Peregrina pelo <strong>alcance do movimento</strong> (100+ países), pois não são o mesmo fluxo. Os números de público são <strong>estimativas não-censitárias</strong>; o Pátio Rural é medido pelo nº de expositores e o turismo paleontológico pela extensão do roteiro.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Berço mundial da Campanha da Mãe Peregrina</h3>
+      <div class="sub">Santuário de Schoenstatt (Tabor) · legado do Diácono João Luiz Pozzobon</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        Em <strong>10 de setembro de 1950</strong>, no Santuário de Schoenstatt de Santa Maria — o <strong>1º Santuário de Schoenstatt do Brasil</strong> (1948) —, o Diácono
+        <strong>João Luiz Pozzobon</strong> recebeu a imagem da <strong>Mãe Peregrina</strong> e deu início a um movimento que se tornou <strong>global</strong>. Em quase 40 anos de
+        apostolado, percorreu <strong>mais de 140 mil km</strong> levando a imagem a famílias, hospitais, escolas e presídios. Hoje a Campanha está presente em
+        <strong>mais de 100 países</strong>, nos <strong>seis continentes</strong>. Declarado <strong>Venerável em 2025</strong>, Pozzobon tem processo de beatificação em curso —
+        o que reforça Santa Maria como <strong>destino de peregrinação e turismo religioso de alcance internacional</strong>.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:18px">
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)">100+</div><div style="font-size:13px;color:var(--muted);font-weight:600">países alcançados · 6 continentes</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--magenta)">+140 mil km</div><div style="font-size:13px;color:var(--muted);font-weight:600">percorridos por Pozzobon</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)">1950</div><div style="font-size:13px;color:var(--muted);font-weight:600">início da Campanha · em Santa Maria</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--green)">Venerável</div><div style="font-size:13px;color:var(--muted);font-weight:600">declarado em 2025 · causa em curso</div></div>
+      </div>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Fontes: Campanha da Mãe Peregrina de Schoenstatt · Arquidiocese de Santa Maria · CNBB · Schoenstatt Brasil.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Atrativos e marcos turísticos</h3>
+      <div class="sub">Equipamentos religiosos, científicos, esportivos e culturais</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+        <span class="tagchip">Basílica de N. Sra. Medianeira</span>
+        <span class="tagchip">Santuário Tabor · 1º Schoenstatt do Brasil (1948)</span>
+        <span class="tagchip">Berço da Campanha da Mãe Peregrina (1950)</span>
+        <span class="tagchip">Diácono João Luiz Pozzobon · Venerável</span>
+        <span class="tagchip">Acampamento Farroupilha · Semana Farroupilha</span>
+        <span class="tagchip">Maratona Internacional de Santa Maria</span>
+        <span class="tagchip">Festival de Balonismo</span>
+        <span class="tagchip">Sanga da Alemoa · 1º dinossauro do Brasil</span>
+        <span class="tagchip">Rota Paleontológica (300 km)</span>
+        <span class="tagchip">CAPPA/UFSM · fósseis do Triássico</span>
+        <span class="tagchip">Pátio Rural · produção dos distritos</span>
+        <span class="tagchip">Festa do Churrasco e da Cuca</span>
+        <span class="tagchip">Festival Gastronômico (SINDHTUR)</span>
+        <span class="tagchip">Centro Histórico · Vila Belga</span>
+        <span class="tagchip">Expo UFSM · novo centro de eventos</span>
+      </div>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Principais atrativos da cidade. Santa Maria sedia ainda o Staurikossaurus pricei, primeiro dinossauro descrito no Brasil (Sanga da Alemoa, 1936). Fontes: PMSM · Arquidiocese · UFSM/CAPPA · Geoparque Quarta Colônia · SINDHTUR.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Leitura econômica do turismo</h3>
+      <div class="sub">O que o fluxo de visitantes representa para a cidade</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        O turismo de Santa Maria é <strong>diversificado e sazonal ao longo de todo o ano</strong>: a <strong>Romaria da Medianeira</strong> mobiliza centenas de milhares de fiéis,
+        a <strong>Semana Farroupilha</strong> celebra a identidade gaúcha (público estimado em dezenas de milhares), e eventos como o <strong>Festival de Balonismo</strong> e a
+        <strong>Maratona Internacional</strong> atraem público de outros estados e países — fluxo que <strong>aquece hotelaria, gastronomia, comércio e transporte</strong>.
+        O <strong>Pátio Rural</strong> reforça o <strong>turismo rural e gastronômico</strong>: na 22ª edição (2025) reuniu <strong>mais de 50 expositores</strong> dos nove distritos,
+        valorizando a produção, o artesanato e a agroindústria locais.
+        Somam-se a isso o pioneirismo do <strong>turismo paleontológico</strong> (a região do primeiro dinossauro brasileiro) e a futura <strong>Expo UFSM</strong>, que ampliará a
+        capacidade da cidade para <strong>congressos, feiras e turismo de negócios</strong>.
+        <br><br>
+        <strong>Próxima camada de dados (a consolidar):</strong> ocupação hoteleira e número de leitos, empregos formais no setor de turismo, gasto médio do visitante e impacto no
+        PIB de serviços — indicadores ainda sem fonte pública consolidada que esta seção pretende reunir.
+      </p>
+    </div>
+
+    <div class="ch-head reveal" style="margin-top:40px">
+      <span class="ch-tag"><span class="bar"></span>Turismo em empresas · CNAE</span>
+      <h2>Quantas empresas o turismo movimenta na cidade</h2>
+      <p>Quantas <strong>empresas com CNPJ ativo</strong> existem em Santa Maria em cada ramo do turismo. Os 4 cartões abaixo mostram o <strong>total de empresas por segmento</strong>; o gráfico ao lado abre cada segmento por tipo de atividade (CNAE). Base: <strong>Dados Públicos do CNPJ — Receita Federal</strong>, via Econodata (atualização <strong>maio/2026</strong>). Inclui microempreendedores (MEI).</p>
+    </div>
+    <div class="grid g4">
+      <div class="card metric reveal"><span class="chip up">1 · agências</span><div class="num" data-count="85">0</div><div class="title">empresas de agências de viagem</div><div class="src">CNAE 7911-2/00</div></div>
+      <div class="card metric reveal"><span class="chip gold">2 · hospedagem</span><div class="num" data-count="47">0</div><div class="title">hotéis, pousadas, pensões e campings</div><div class="src">CNAE 5510 + 5590</div></div>
+      <div class="card metric reveal"><span class="chip up">3 · alimentação</span><div class="num" data-count="1241">0</div><div class="title">restaurantes, lanchonetes e bares</div><div class="src">CNAE 5611 (3 atividades)</div></div>
+      <div class="card metric reveal"><span class="chip gold">4 · atrações</span><div class="num" data-count="7">0</div><div class="title">museus e sítios culturais (com CNPJ)</div><div class="src">CNAE 9102 / 9103</div></div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>Detalhe por tipo de atividade</h3>
+        <div class="sub">Cada barra = nº de empresas ativas naquele CNAE · mai/2026</div>
+
+        <div style="font-weight:700;font-size:12.5px;color:var(--blue);margin:18px 0 6px;text-transform:uppercase;letter-spacing:.04em">Alimentação · ~1.241 empresas</div>
+        <div class="barrow"><div class="top"><span>Lanchonetes, cafés e casas de sucos</span><span>627 empresas</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+        <div class="barrow"><div class="top"><span>Restaurantes</span><span>482 empresas</span></div><div class="track"><div class="fill" data-w="77"></div></div></div>
+        <div class="barrow"><div class="top"><span>Bares</span><span>132 empresas</span></div><div class="track"><div class="fill" data-w="21"></div></div></div>
+
+        <div style="font-weight:700;font-size:12.5px;color:var(--magenta);margin:20px 0 6px;text-transform:uppercase;letter-spacing:.04em">Agências · 85 empresas</div>
+        <div class="barrow"><div class="top"><span>Agências de viagens</span><span>85 empresas</span></div><div class="track"><div class="fill" data-w="14"></div></div></div>
+
+        <div style="font-weight:700;font-size:12.5px;color:var(--gold);margin:20px 0 6px;text-transform:uppercase;letter-spacing:.04em">Hospedagem · 47 empresas</div>
+        <div class="barrow"><div class="top"><span>Outros alojamentos (pousadas, pensões, campings)</span><span>25 empresas</span></div><div class="track"><div class="fill" data-w="6"></div></div></div>
+        <div class="barrow"><div class="top"><span>Hotéis</span><span>22 empresas</span></div><div class="track"><div class="fill" data-w="5"></div></div></div>
+
+        <div style="font-weight:700;font-size:12.5px;color:var(--green);margin:20px 0 6px;text-transform:uppercase;letter-spacing:.04em">Atrações culturais · 7 empresas</div>
+        <div class="barrow"><div class="top"><span>Museus e sítios (patrimônio cultural/ambiental)</span><span>7 empresas</span></div><div class="track"><div class="fill" data-w="3"></div></div></div>
+
+        <p style="margin-top:16px;font-size:13px;color:var(--muted)">Leitura rápida: a <strong>alimentação domina</strong> de longe (~1.241 empresas). O turismo "puro" — agências e hospedagem — soma <strong>~132 empresas</strong>. Há poucas atrações culturais <em>com CNPJ próprio</em> porque a maioria (museus, igrejas, praças) é <strong>pública</strong> e não conta como empresa.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Concentração por bairro</h3>
+        <div class="sub">Onde as empresas de turismo estão na cidade</div>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+          A quebra <strong>exata por bairro</strong> exige os <strong>microdados de endereço da Receita Federal</strong> (base "Estabelecimentos", multi-GB) ou um <strong>cadastro econômico da Prefeitura</strong> — dados que não estão disponíveis em agregadores gratuitos. Pela <strong>amostra de endereços</strong> das listas consultadas, o padrão é claro: forte concentração no <strong>Centro</strong>, seguido por <strong>Camobi</strong> (eixo UFSM) e pelo entorno das avenidas. Bairros recorrentes:
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+          <span class="tagchip">Centro (predominante)</span>
+          <span class="tagchip">Camobi (UFSM)</span>
+          <span class="tagchip">N. Sra. Medianeira</span>
+          <span class="tagchip">N. Sra. de Lourdes</span>
+          <span class="tagchip">N. Sra. do Rosário</span>
+          <span class="tagchip">N. Sra. das Dores</span>
+          <span class="tagchip">N. Sra. de Fátima</span>
+          <span class="tagchip">Bonfim</span>
+          <span class="tagchip">Patronato</span>
+          <span class="tagchip">Itararé</span>
+          <span class="tagchip">Juscelino Kubitschek</span>
+          <span class="tagchip">Km Três</span>
+        </div>
+        <p style="margin-top:16px;font-size:12.5px;color:var(--muted)">Lista de bairros <strong>observada em amostra</strong>, não uma contagem fechada. Para gerar a contagem precisa por bairro, basta colocar na pasta do projeto o CSV de <strong>"Estabelecimentos" da Receita Federal</strong> (dados públicos do CNPJ) ou um <strong>export do cadastro econômico da Prefeitura</strong> — o cruzamento por bairro é então processado localmente.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Emprego e contexto do mercado de trabalho</h3>
+      <div class="sub">Emprego formal no município · fontes oficiais (CAGED/RAIS)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:18px">
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empregos formais no município · todos os setores (RAIS, abr/2026)</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-count="3.6" data-dec="1" data-prefix="R$ " data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">remuneração média mensal · vínculos formais (2026)</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--green)" data-count="297" data-prefix="+">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">saldo de empregos · jan–fev 2026 (município)</div></div>
+      </div>
+      <p style="margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.6"><strong>Importante:</strong> os números acima são do <strong>município inteiro</strong> (todos os setores), atualizados para <strong>2026</strong>: <strong>74,2 mil</strong> vínculos formais, remuneração média <strong>R$ 3,6 mil</strong> e <strong>saldo +297</strong> (jan–fev/2026), via CAGED/RAIS (atualização abr/2026). O Brasil <strong>não divulga em base aberta o emprego formal isolado do turismo por cidade</strong>, e "vagas em aberto" também não existem de forma consolidada por CNAE/município. Para uma contagem <strong>exata de empregos só nas empresas de turismo</strong>, é necessário processar os microdados <strong>RAIS/CAGED por CNAE</strong> (ou o relatório de funcionários da Econodata Premium) — posso gerar esse cálculo se o arquivo for colocado na pasta do projeto.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <p style="font-size:12.5px;color:var(--muted);margin:0;line-height:1.6"><strong>Fontes e método:</strong> contagens de empresas ativas por CNAE em Santa Maria/RS extraídas da <strong>Econodata</strong> (espelho dos Dados Públicos do CNPJ da <strong>Receita Federal</strong>), última atualização <strong>maio/2026</strong>: Agências de viagens 7911-2/00 = 85; Hotéis 5510-8/01 = 22; Outros alojamentos 5590 = 25; Restaurantes 5611-2/01 = 482; Lanchonetes/cafés 5611-2/03 = 627; Bares 5611-2/04 = 132; Patrimônio cultural/ambiental R-91 (9102/9103) = 7. Valores referem-se a <strong>estabelecimentos com sede no município</strong> e podem variar conforme a data de atualização da base. <strong>Emprego:</strong> emprego formal do município (todos os setores) — Novo CAGED / RAIS, Ministério do Trabalho e Emprego (estoque ~74,2 mil vínculos; remuneração média R$ 3,6 mil; saldo +297 jan–fev/2026; atualização abr/2026).</p>
     </div>
   </div>
 </section>
@@ -933,7 +1110,7 @@
         </div>
         <div>
           <h5>&nbsp;</h5>
-          <a href="#saude">Saúde</a><a href="#seguranca">Segurança</a><a href="#custo">Custo de vida</a><a href="#galeria">Galeria</a>
+          <a href="#saude">Saúde</a><a href="#seguranca">Segurança</a><a href="#custo">Custo de vida</a><a href="#turismo">Turismo</a><a href="#galeria">Galeria</a>
         </div>
         <div>
           <h5>Gestão</h5>
@@ -1500,6 +1677,16 @@ whenVisible('eduIesChart',async()=>{
     data:{labels:l,datasets:[{data:d,backgroundColor:[C.blue,C.magenta,C.sky,C.green],borderRadius:6,maxBarThickness:90}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' cursos de graduação'}}},
       scales:{y:{grid:{color:C.grid},beginAtZero:true,ticks:{stepSize:30}},x:{grid:{display:false}}}}});
+});
+
+whenVisible('turismoChart',async()=>{
+  const fb={l:['Romaria da Medianeira (~est.)','Festival de Balonismo','Acampamento Farroupilha (~est.)','Maratona Internacional'],d:[250000,80000,65000,3500]};
+  const r=await sbRows('turismo_eventos','ordem');
+  const l=r?r.map(x=>x.evento):fb.l, d=r?r.map(x=>Number(x.publico)):fb.d;
+  new Chart(document.getElementById('turismoChart'),{type:'bar',
+    data:{labels:l,datasets:[{data:d,backgroundColor:[C.magenta,C.gold,C.blue,C.sky,C.green],borderRadius:6,maxBarThickness:46}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.toLocaleString('pt-BR')+' pessoas'}}},
+      scales:{x:{grid:{color:C.grid},beginAtZero:true,ticks:{callback:v=>v>=1000?(v/1000)+' mil':v}},y:{grid:{display:false}}}}});
 });
 
 whenVisible('milFamiliaChart',async()=>{
