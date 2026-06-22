@@ -43,7 +43,8 @@
   /* ===== Header / Nav ===== */
   header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);
     background:rgba(255,255,255,.94);border-bottom:1px solid rgba(61,26,91,.10);box-shadow:0 2px 14px rgba(61,26,91,.07);transition:.3s}
-  .nav{display:flex;align-items:center;gap:22px;height:180px;transition:height .3s}
+  header .wrap{max-width:1340px}
+  .nav{display:flex;align-items:center;gap:18px;height:180px;transition:height .3s}
   header.shrink .nav{height:96px}
   header.shrink .brand .crest{width:80px;height:80px}
   .brand{display:flex;align-items:center;gap:20px;color:var(--navy);font-weight:700;flex-shrink:0}
@@ -53,14 +54,26 @@
   .brand .brand-txt{display:flex;flex-direction:column;justify-content:center;line-height:1.14;white-space:nowrap}
   .brand .brand-txt b{font-family:'Sora';font-size:19px;font-weight:700;letter-spacing:.01em;color:var(--navy)}
   .brand small{display:block;font-size:12px;font-weight:500;color:#7A6790;letter-spacing:.04em;margin-top:3px}
-  .nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:nowrap;align-items:center}
-  .nav-links a{color:#4A3563;font-size:13px;font-weight:600;padding:8px 11px;border-radius:9px;transition:.2s;white-space:nowrap}
+  .nav-links{display:flex;gap:1px;margin-left:auto;flex-wrap:nowrap;align-items:center}
+  .nav-links a{color:#4A3563;font-size:12.5px;font-weight:600;padding:7px 9px;border-radius:9px;transition:.2s;white-space:nowrap}
   .nav-links a:hover{background:rgba(138,42,174,.10);color:var(--blue)}
   .btn-admin{background:linear-gradient(135deg,var(--magenta),var(--orange));color:#fff !important;font-weight:600;
     padding:9px 16px !important;border-radius:10px !important;box-shadow:0 6px 18px rgba(230,24,141,.35)}
   .btn-admin:hover{transform:translateY(-1px)}
-  @media(max-width:1120px){.nav-links a{font-size:12px;padding:7px 8px}.nav-links{gap:1px}}
-  @media(max-width:940px){.nav-links{display:none}.nav{justify-content:space-between}.btn-admin{margin-left:auto}}
+  .nav-toggle{display:none;margin-left:auto;background:none;border:none;font-size:27px;line-height:1;color:var(--navy);cursor:pointer;padding:4px 8px}
+  @media(max-width:1300px){.nav-links a{font-size:12px;padding:6px 7px}.nav-links{gap:1px}.nav{gap:14px}}
+  @media(max-width:1120px){.nav-links a{font-size:11.5px;padding:6px 6px}.brand .brand-txt b{font-size:17px}.brand small{font-size:11px}}
+  @media(max-width:980px){
+    .nav{position:relative}
+    .nav-toggle{display:block}
+    .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:2px;
+      background:rgba(255,255,255,.98);backdrop-filter:blur(14px);border-bottom:1px solid rgba(61,26,91,.12);
+      box-shadow:0 16px 30px rgba(61,26,91,.16);padding:10px 16px 16px}
+    header.nav-open .nav-links{display:flex}
+    .nav-links a{font-size:15.5px;padding:13px 12px;border-radius:10px}
+    .nav-links a:not(.btn-admin){border-bottom:1px solid rgba(61,26,91,.06)}
+    .btn-admin{margin-top:10px;text-align:center;padding:14px 16px !important}
+  }
 
   /* ===== Hero ===== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;
@@ -131,6 +144,7 @@
   .chip.ph{visibility:hidden}
   .chip.up{background:#E4F7EE;color:#0a8a59}
   .chip.down{background:#FDEAEA;color:#c0392b}
+  .tagchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--navy);background:rgba(138,43,174,.08);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
   .chip.gold{background:#FBF1D8;color:#9c7415}
 
   .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm)}
@@ -256,7 +270,6 @@
   .demo-note{background:rgba(230,178,58,.12);border:1px solid rgba(230,178,58,.3);color:#f0c869;font-size:12px;padding:9px 14px;border-radius:10px;margin-bottom:22px}
 
   @media(max-width:880px){
-    .nav-links{display:none}
     .g4,.g3,.g2,.hero-stats,.admin-grid,.media-strip,.thumbs,.foot-cols,.ministat,.trilha{grid-template-columns:repeat(2,1fr)}
     .hero-stats{gap:12px}
     .media-strip{grid-template-columns:repeat(2,1fr)}
@@ -291,6 +304,7 @@
       <div class="crest" id="brandCrest">♥</div>
       <div class="brand-txt"><b>Radiografia de Santa Maria</b><small>SMDEI · Prefeitura de Santa Maria</small></div>
     </div>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleNav(this)">☰</button>
     <nav class="nav-links">
       <a href="#inovacao">Inovação</a>
       <a href="#economia">Economia</a>
@@ -300,6 +314,8 @@
       <a href="#saude">Saúde</a>
       <a href="#seguranca">Segurança</a>
       <a href="#custo">Custo de vida</a>
+      <a href="#mobilidade">Mobilidade</a>
+      <a href="#educacao">Educação</a>
       <a href="#" class="btn-admin" onclick="openAdmin(event)">Painel Admin</a>
     </nav>
   </div>
@@ -335,6 +351,27 @@
     </div>
   </div>
   <div class="scroll-cue">role para a radiografia ↓</div>
+</section>
+
+<!-- ===== COMPARTILHAR (topo) ===== -->
+<section class="share-sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="share-card reveal">
+      <span class="share-lbl">Compartilhe este projeto:</span>
+      <a id="shWhats" class="share-btn sh-whats" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.84L2 22l4.38-1.15a9.86 9.86 0 0 0 5.66 1.78h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.93 1.34-.5.05-1.13.21-3.66-.77-3.07-1.21-5.04-4.34-5.2-4.55-.15-.21-1.24-1.65-1.24-3.15 0-1.5.79-2.24 1.07-2.55.28-.31.61-.38.81-.38l.58.01c.19.01.44-.07.69.53.24.6.83 2.07.9 2.22.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.13.64-.08.17-.21.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2.01.95.3.15.5.22.57.34.07.12.07.71-.17 1.39z"/></svg>
+        WhatsApp
+      </a>
+      <a id="shFace" class="share-btn sh-face" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+        Facebook
+      </a>
+      <button id="shCopy" class="share-btn sh-copy" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:18px;height:18px"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        Copiar link
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- ===== INOVAÇÃO ===== -->
@@ -649,6 +686,155 @@
   </div>
 </section>
 
+<!-- ===== MOBILIDADE & FROTA ===== -->
+<section class="chapter" id="mobilidade">
+  <div class="wrap">
+    <div class="ch-head reveal">
+      <span class="ch-tag"><span class="bar"></span>Capítulo 08 · Mobilidade & Frota</span>
+      <h2>Uma frota que dobrou em 18 anos</h2>
+      <p>Santa Maria fechou 2025 com <strong>179.719 veículos</strong> em circulação — eram 89.231 em 2007. A frota cresceu <strong>101%</strong> enquanto a população subiu apenas 7,2%, sinal de mais renda e consumo. <strong>Fontes: DetranRS / SENATRAN (frota) e Sefaz-RS (IPVA) · atualização mensal/anual.</strong></p>
+    </div>
+    <div class="grid g4">
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="179719">0</div><div class="title">Frota total de veículos</div><div class="src">DetranRS · em circulação · 2025</div></div>
+      <div class="card metric reveal"><span class="chip up">+101%</span><div class="num">+90 mil</div><div class="title">Veículos a mais que em 2007</div><div class="src">De 89.231 para 179.719 · a frota dobrou</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="99.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Frota tributável · IPVA 2026</div><div class="src">Sefaz-RS · ~55% da frota</div></div>
+      <div class="card metric reveal"><span class="chip up">5º no RS</span><div class="num" data-count="156.1" data-dec="1" data-prefix="R$ " data-suffix=" mi" style="font-size:33px;white-space:nowrap">0</div><div class="title">IPVA 2026 · total no município</div><div class="src">Previsão Sefaz-RS · metade (~R$ 78 mi) à Prefeitura</div></div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>Composição da frota por categoria</h3>
+        <div class="sub">DetranRS / SENATRAN · 2022 (último detalhamento por categoria)</div>
+        <div class="chart-box"><canvas id="frotaCatChart"></canvas></div>
+      </div>
+      <div class="panel reveal">
+        <h3>Evolução da frota de veículos</h3>
+        <div class="sub">DetranRS · veículos em circulação · 2007–2025</div>
+        <div class="chart-box"><canvas id="frotaSerieChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Leitura econômica da frota</h3>
+      <div class="sub">O que o perfil de veículos diz sobre a economia da cidade</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        Além dos <strong>automóveis</strong> (cerca de 59% da frota), Santa Maria tem presença forte de <strong>motocicletas</strong> e, sobretudo, de
+        <strong>utilitários, caminhonetes e camionetas</strong> — o segmento que mais cresceu entre 2013 e 2022 (<strong>+65,3%</strong>, de 15.327 para 25.338 unidades).
+        Esse perfil reforça a leitura de uma cidade que "funciona na prática": mais serviços, manutenção, obras, assistência técnica, pequenos negócios e logística leve.
+        Na arrecadação, a frota tributável (99,2 mil veículos, fabricados a partir de 2007) deve gerar <strong>R$ 156,1 milhões</strong> de IPVA em 2026 — 5ª maior previsão do Estado —,
+        com metade revertida diretamente ao município. O desafio não é conter o crescimento, e sim transformá-lo em <strong>eficiência urbana</strong>.
+        <br><br>
+        <strong>Próxima camada de dados (automatizável):</strong> emplacamentos mensais de veículos novos (Fenabrave / DetranRS), que permitirão acompanhar o fluxo do mercado mês a mês.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCAÇÃO & ENSINO SUPERIOR ===== -->
+<section class="chapter" id="educacao">
+  <div class="wrap">
+    <div class="ch-head reveal">
+      <span class="ch-tag"><span class="bar"></span>Capítulo 09 · Cidade Universitária</span>
+      <h2>30 mil estudantes no coração do Rio Grande</h2>
+      <p>Santa Maria é a <strong>cidade universitária</strong> do interior gaúcho: abriga a UFSM — <strong>primeira universidade federal criada fora de uma capital</strong> no Brasil — além da Universidade Franciscana (UFN), da Ulbra, do novo campus do IFFar e de dezenas de faculdades. Só a UFSM reúne cerca de <strong>30 mil estudantes</strong> numa cidade de ~282 mil habitantes. <strong>Fontes: UFSM em Números / INEP (Censo da Educação Superior) · atualização anual.</strong></p>
+    </div>
+    <div class="grid g4">
+      <div class="card metric reveal"><span class="chip up">1 a cada 9 hab.</span><div class="num" data-count="30" data-suffix=" mil">0</div><div class="title">Estudantes na UFSM</div><div class="src">27 mil presencial + 3 mil EAD · 2025</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="3">0</div><div class="title">Universidades na cidade</div><div class="src">UFSM (federal), UFN e Ulbra · + IFFar e faculdades</div></div>
+      <div class="card metric reveal"><span class="chip up">+106 pós</span><div class="num" data-count="131">0</div><div class="title">Cursos de graduação · UFSM</div><div class="src">Presencial · 83 bacharelado, 37 licenciatura, 11 tecnólogo</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num">1ª</div><div class="title">Federal do interior do Brasil</div><div class="src">UFSM · pioneira fora de uma capital</div></div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>Graduação na UFSM por tipo de curso</h3>
+        <div class="sub">UFSM em Números · 131 cursos/habilitações presenciais</div>
+        <div class="chart-box"><canvas id="eduCursosChart"></canvas></div>
+      </div>
+      <div class="panel reveal">
+        <h3>Cursos de graduação por instituição</h3>
+        <div class="sub">UFSM e UFN · oferta presencial e EAD</div>
+        <div class="chart-box"><canvas id="eduIesChart"></canvas></div>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted)">O novo campus do <strong>IFFar em Santa Maria</strong> (oficializado em 2025) deve somar ~1.400 vagas gratuitas entre cursos técnicos e superiores.</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>Vagas e ingresso · UFSM</h3>
+        <div class="sub">Capacidade de ingresso na graduação presencial</div>
+        <div class="barrow"><div class="top"><span>Vagas ofertadas / ano (SISU)</span><span>~5,3 mil</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+        <div class="barrow"><div class="top"><span>Cursos de graduação presenciais</span><span>96–131</span></div><div class="track"><div class="fill" data-w="62"></div></div></div>
+        <div class="barrow"><div class="top"><span>Programas de pós-graduação</span><span>106</span></div><div class="track"><div class="fill" data-w="48"></div></div></div>
+        <div class="barrow"><div class="top"><span>Servidores (docentes + técnicos)</span><span>~5 mil</span></div><div class="track"><div class="fill" data-w="44"></div></div></div>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted)">Barras em escala relativa à oferta de vagas. Fonte: UFSM em Números / PROGRAD.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Formandos por curso e por ano</h3>
+        <div class="sub">Concluintes da graduação · a preencher com dado público</div>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+          O número de <strong>concluintes por curso e por ano</strong> existe, mas não há base pública consolidada por município pronta para uso: ele vem do
+          <strong>Censo da Educação Superior (INEP)</strong> — divulgado anualmente por IES — e dos painéis de cada instituição (ex.: <em>UFSM em Números</em>).
+          Como referência de fluxo, a UFSM oferta cerca de <strong>5 mil vagas de ingresso por ano</strong> na graduação presencial.
+          <br><br>
+          A estrutura no banco já está pronta (tabela <code>educacao_formandos</code>: curso · ano · nº de formandos). Assim que a SMDEI obtiver os dados das IES
+          ou extrair do INEP, a série aparece aqui automaticamente — por curso e por ano.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:44px;margin-bottom:10px">
+      <span class="ch-tag"><span class="bar"></span>Tecnologia &amp; Inovação</span>
+    </div>
+    <div class="panel reveal">
+      <h3>Cursos que se conectam com tecnologia e inovação</h3>
+      <div class="sub">A base acadêmica que alimenta o ecossistema de inovação da cidade</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        O <strong>Centro de Tecnologia da UFSM</strong> concentra a formação de base tecnológica de Santa Maria — da computação às engenharias —
+        e é o principal motor que abastece os parques, incubadoras e startups da cidade. Some-se a oferta de UFN, IFFar e demais IES em TI,
+        software e áreas correlatas. São esses cursos que sustentam o ecossistema de inovação <strong>"Inova Centro"</strong> e a fama de <strong>cidade do conhecimento</strong>.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+        <span class="tagchip">Ciência da Computação</span>
+        <span class="tagchip">Sistemas de Informação</span>
+        <span class="tagchip">Engenharia de Computação</span>
+        <span class="tagchip">Engenharia de Controle e Automação</span>
+        <span class="tagchip">Engenharia de Telecomunicações</span>
+        <span class="tagchip">Engenharia Elétrica</span>
+        <span class="tagchip">Engenharia Aeroespacial</span>
+        <span class="tagchip">Engenharia Acústica</span>
+        <span class="tagchip">Engenharia Mecânica</span>
+        <span class="tagchip">Engenharia de Produção</span>
+        <span class="tagchip">Engenharia Química</span>
+        <span class="tagchip">Arquitetura e Urbanismo</span>
+      </div>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Principais cursos de base tecnológica da UFSM (Centro de Tecnologia). Fonte: UFSM · Centro de Tecnologia.</p>
+    </div>
+
+    <div class="grid g4" style="margin-top:22px">
+      <div class="card metric reveal"><span class="chip up">Inova Centro</span><div class="num">+100</div><div class="title">Startups ativas</div><div class="src">Ecossistema de inovação da cidade</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="3">0</div><div class="title">Parques tecnológicos</div><div class="src">Inclui o SM Tecnoparque</div></div>
+      <div class="card metric reveal"><span class="chip up">Pulsar · 1ª do RS</span><div class="num" data-count="3">0</div><div class="title">Incubadoras de tecnologia</div><div class="src">Pulsar (UFSM): 35 startups incubadas</div></div>
+      <div class="card metric reveal"><span class="chip up">714 laboratórios</span><div class="num" data-count="377">0</div><div class="title">Grupos de pesquisa</div><div class="src">Todas as IES · base de P&amp;D local</div></div>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Leitura econômica do ensino superior</h3>
+      <div class="sub">O que a economia universitária representa para a cidade</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        A presença de <strong>~30 mil estudantes</strong> e de cerca de <strong>5 mil servidores</strong> só na UFSM faz do ensino superior um dos
+        principais <strong>motores econômicos</strong> de Santa Maria: moradia, alimentação, serviços, comércio, transporte e uma forte cadeia de
+        <strong>inovação e tecnologia</strong> (incubadoras, parques e startups ligados às universidades). É também um polo de <strong>atração e formação de talento</strong> —
+        a mesma mão de obra qualificada que sustenta o ecossistema de TI e o baixo custo relativo de contratação na cidade.
+        O desafio estratégico é <strong>reter os formandos</strong>: transformar quem se forma aqui em quem empreende e trabalha aqui.
+        <br><br>
+        <strong>Próxima camada de dados (anual):</strong> matrículas, ingressantes e concluintes por curso (Censo INEP) e indicadores das IES, que permitirão
+        medir a formação de talento ano a ano e cruzá-la com empregos e empresas.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== MÍDIA / VIDA NA CIDADE ===== -->
 <section class="chapter" id="galeria">
   <div class="wrap">
@@ -662,27 +848,6 @@
       <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Vídeo · Feisma</span></div>
       <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg><span>InovaTec UFSM</span></div>
       <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-7 7"/></svg><span>Centro histórico</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMPARTILHAR ===== -->
-<section class="share-sec">
-  <div class="wrap">
-    <div class="share-card reveal">
-      <span class="share-lbl">Compartilhe este projeto:</span>
-      <a id="shWhats" class="share-btn sh-whats" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.84L2 22l4.38-1.15a9.86 9.86 0 0 0 5.66 1.78h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.93 1.34-.5.05-1.13.21-3.66-.77-3.07-1.21-5.04-4.34-5.2-4.55-.15-.21-1.24-1.65-1.24-3.15 0-1.5.79-2.24 1.07-2.55.28-.31.61-.38.81-.38l.58.01c.19.01.44-.07.69.53.24.6.83 2.07.9 2.22.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.13.64-.08.17-.21.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2.01.95.3.15.5.22.57.34.07.12.07.71-.17 1.39z"/></svg>
-        WhatsApp
-      </a>
-      <a id="shFace" class="share-btn sh-face" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
-        Facebook
-      </a>
-      <button id="shCopy" class="share-btn sh-copy" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:18px;height:18px"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        Copiar link
-      </button>
     </div>
   </div>
 </section>
@@ -855,6 +1020,17 @@ document.querySelectorAll('.hero [data-count]').forEach(countUp);
 /* ===== Admin ===== */
 function openAdmin(e){if(e)e.preventDefault();document.getElementById('admin').classList.add('open');document.body.style.overflow='hidden';}
 function closeAdmin(){document.getElementById('admin').classList.remove('open');document.body.style.overflow='';}
+
+/* ===== Menu mobile (hambúrguer) ===== */
+function toggleNav(btn){
+  const h=document.querySelector('header');
+  const open=h.classList.toggle('nav-open');
+  if(btn)btn.setAttribute('aria-expanded',open?'true':'false');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  const h=document.querySelector('header');h.classList.remove('nav-open');
+  const t=document.querySelector('.nav-toggle');if(t)t.setAttribute('aria-expanded','false');
+}));
 
 /* ===== Charts ===== */
 const C={navy:'#3D1A5B',blue:'#8A2BAE',green:'#58B947',gold:'#F7901E',magenta:'#E6188D',sky:'#1F9BD4',yellow:'#FCC700',muted:'#6E5C82',grid:'#EAE2F2'};
@@ -1219,6 +1395,47 @@ whenVisible('costChart',async()=>{
     data:{labels:l,datasets:[{data:d,backgroundColor:[C.magenta,C.blue,C.blue,C.blue,C.navy],borderRadius:6}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'R$ '+c.raw.toLocaleString('pt-BR')+'/mês'}}},
       scales:{y:{grid:{color:C.grid},ticks:{callback:v=>'R$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+});
+
+whenVisible('frotaCatChart',async()=>{
+  const fb={l:['Automóveis','Motos / ciclomotores','Utilitários / caminhonetes','Reboques','Caminhões','Ônibus / micro-ônibus','Tratores / outros'],d:[100983,30426,25338,6852,4925,1347,650]};
+  const r=await sbRows('frota_categoria','ordem');
+  const l=r?r.map(x=>x.categoria):fb.l, d=r?r.map(x=>Number(x.quantidade)):fb.d;
+  new Chart(document.getElementById('frotaCatChart'),{type:'doughnut',
+    data:{labels:l,datasets:[{data:d,backgroundColor:[C.blue,C.magenta,C.sky,C.green,C.gold,C.indigo||'#2E3192',C.muted],borderWidth:0}]},
+    options:{cutout:'60%',plugins:{legend:{position:'bottom',labels:{padding:12,usePointStyle:true,pointStyle:'circle'}},
+      tooltip:{callbacks:{label:c=>c.label+': '+c.raw.toLocaleString('pt-BR')+' veículos'}}}}});
+});
+
+whenVisible('frotaSerieChart',async()=>{
+  const fb={l:['2007','2012','2022','2025'],d:[89231,124057,170341,179719]};
+  const r=await sbRows('frota_serie','ano');
+  const l=r?r.map(x=>String(x.ano)):fb.l, d=r?r.map(x=>Number(x.total)):fb.d;
+  new Chart(document.getElementById('frotaSerieChart'),{type:'line',
+    data:{labels:l,datasets:[{data:d,borderColor:C.blue,backgroundColor:'rgba(138,43,174,.12)',fill:true,tension:.35,
+      pointBackgroundColor:[C.magenta,C.sky,C.gold,C.green],pointRadius:6,pointHoverRadius:8,borderWidth:3}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.toLocaleString('pt-BR')+' veículos'}}},
+      scales:{y:{grid:{color:C.grid},beginAtZero:false,ticks:{callback:v=>(v/1000)+' mil'}},x:{grid:{display:false}}}}});
+});
+
+whenVisible('eduCursosChart',async()=>{
+  const fb={l:['Bacharelado','Licenciatura','Tecnólogo'],d:[83,37,11]};
+  const r=await sbRows('educacao_cursos_tipo','ordem');
+  const l=r?r.map(x=>x.tipo):fb.l, d=r?r.map(x=>Number(x.quantidade)):fb.d;
+  new Chart(document.getElementById('eduCursosChart'),{type:'doughnut',
+    data:{labels:l,datasets:[{data:d,backgroundColor:[C.blue,C.magenta,C.gold],borderWidth:0}]},
+    options:{cutout:'60%',plugins:{legend:{position:'bottom',labels:{padding:12,usePointStyle:true,pointStyle:'circle'}},
+      tooltip:{callbacks:{label:c=>c.label+': '+c.raw+' cursos'}}}}});
+});
+
+whenVisible('eduIesChart',async()=>{
+  const fb={l:['UFSM','UFN'],d:[131,32]};
+  const r=await sbRows('educacao_ies','ordem');
+  const l=r?r.map(x=>x.instituicao):fb.l, d=r?r.map(x=>Number(x.cursos)):fb.d;
+  new Chart(document.getElementById('eduIesChart'),{type:'bar',
+    data:{labels:l,datasets:[{data:d,backgroundColor:[C.blue,C.magenta,C.sky,C.green],borderRadius:6,maxBarThickness:90}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' cursos de graduação'}}},
+      scales:{y:{grid:{color:C.grid},beginAtZero:true,ticks:{stepSize:30}},x:{grid:{display:false}}}}});
 });
 </script>
 </body>
