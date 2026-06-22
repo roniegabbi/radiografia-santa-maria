@@ -316,6 +316,7 @@
       <a href="#custo">Custo de vida</a>
       <a href="#mobilidade">Mobilidade</a>
       <a href="#educacao">Educação</a>
+      <a href="#militar">Cidade-Quartel</a>
       <a href="#" class="btn-admin" onclick="openAdmin(event)">Painel Admin</a>
     </nav>
   </div>
@@ -776,9 +777,6 @@
           O número de <strong>concluintes por curso e por ano</strong> existe, mas não há base pública consolidada por município pronta para uso: ele vem do
           <strong>Censo da Educação Superior (INEP)</strong> — divulgado anualmente por IES — e dos painéis de cada instituição (ex.: <em>UFSM em Números</em>).
           Como referência de fluxo, a UFSM oferta cerca de <strong>5 mil vagas de ingresso por ano</strong> na graduação presencial.
-          <br><br>
-          A estrutura no banco já está pronta (tabela <code>educacao_formandos</code>: curso · ano · nº de formandos). Assim que a SMDEI obtiver os dados das IES
-          ou extrair do INEP, a série aparece aqui automaticamente — por curso e por ano.
         </p>
       </div>
     </div>
@@ -830,6 +828,72 @@
         <br><br>
         <strong>Próxima camada de dados (anual):</strong> matrículas, ingressantes e concluintes por curso (Censo INEP) e indicadores das IES, que permitirão
         medir a formação de talento ano a ano e cruzá-la com empregos e empresas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CIDADE-QUARTEL / MILITAR ===== -->
+<section class="chapter" id="militar">
+  <div class="wrap">
+    <div class="ch-head reveal">
+      <span class="ch-tag"><span class="bar"></span>Capítulo 10 · Cidade-Quartel</span>
+      <h2>Uma das maiores praças militares do Brasil</h2>
+      <p>Santa Maria é historicamente uma <strong>"cidade-quartel"</strong>: sedia o comando da <strong>3ª Divisão de Exército</strong> — a única <strong>Divisão Encouraçada (blindada)</strong> do Exército Brasileiro — e a <strong>6ª Brigada de Infantaria Blindada</strong>, além da <strong>Base Aérea de Santa Maria (FAB)</strong>, uma das principais bases de caça do país. Somando <strong>Exército e Força Aérea</strong>, são cerca de <strong>6,7 mil militares ativos</strong> na cidade; com inativos e dependentes do Exército, a "família militar" passa de <strong>18 mil pessoas</strong>. A cidade abriga ainda unidades da <strong>Brigada Militar</strong> (polícia militar do RS), como o <strong>2º Batalhão de Polícia de Choque</strong> — cujo efetivo por município não é divulgado pela corporação. <strong>Fontes: Comando da 3ª DE / Base Administrativa da Guarnição de Santa Maria / Força Aérea Brasileira · estimativas (não-censitárias).</strong></p>
+    </div>
+    <div class="grid g4">
+      <div class="card metric reveal"><span class="chip up">Exército + FAB</span><div class="num" data-count="6674">0</div><div class="title">Militares ativos · Forças Armadas</div><div class="src">≈5.274 do Exército + ~1.400 da Base Aérea</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="22">0</div><div class="title">Organizações militares · Exército</div><div class="src">Quartéis e estabelecimentos na guarnição</div></div>
+      <div class="card metric reveal"><span class="chip up">caça A-1</span><div class="num" data-count="1400" data-prefix="~">0</div><div class="title">Militares na Base Aérea (FAB)</div><div class="src">Ala 4 · esquadrões de caça e reconhecimento</div></div>
+      <div class="card metric reveal"><span class="chip up">com família</span><div class="num" data-count="18" data-suffix=" mil">0</div><div class="title">"Família militar" do Exército</div><div class="src">Ativos + inativos + dependentes</div></div>
+    </div>
+
+    <div class="grid g2" style="align-items:stretch;margin-top:22px">
+      <div class="panel reveal">
+        <h3>A "família militar" do Exército</h3>
+        <div class="sub">Composição estimada das ~18 mil pessoas (guarnição do Exército)</div>
+        <div class="chart-box"><canvas id="milFamiliaChart"></canvas></div>
+      </div>
+      <div class="panel reveal">
+        <h3>O alcance da 3ª Divisão de Exército</h3>
+        <div class="sub">Sediada em Santa Maria · comanda quase metade do RS</div>
+        <div class="barrow"><div class="top"><span>Efetivo da 3ª DE (todo o comando)</span><span>~15 mil</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+        <div class="barrow"><div class="top"><span>OMs subordinadas à 3ª DE</span><span>44</span></div><div class="track"><div class="fill" data-w="70"></div></div></div>
+        <div class="barrow"><div class="top"><span>Militares ativos na guarnição de SM</span><span>~5,3 mil</span></div><div class="track"><div class="fill" data-w="35"></div></div></div>
+        <div class="barrow"><div class="top"><span>OMs na guarnição de Santa Maria</span><span>~22</span></div><div class="track"><div class="fill" data-w="35"></div></div></div>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted)">A 3ª DE comanda tropas de Santa Maria, Santiago, Uruguaiana, Cruz Alta e Santo Ângelo. Os números da cidade são um subconjunto do total da Divisão. Fonte: Comando da 3ª DE.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Unidades militares na cidade</h3>
+      <div class="sub">Exército, Força Aérea e Brigada Militar sediados em Santa Maria e Itaara</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+        <span class="tagchip">Comando da 3ª Divisão de Exército</span>
+        <span class="tagchip">6ª Brigada de Infantaria Blindada</span>
+        <span class="tagchip">Base Aérea de Santa Maria (FAB)</span>
+        <span class="tagchip">Colégio Militar de Santa Maria</span>
+        <span class="tagchip">Hospital Geral de Santa Maria</span>
+        <span class="tagchip">Campo de Instrução de Santa Maria</span>
+        <span class="tagchip">Centro de Adestramento-Sul</span>
+        <span class="tagchip">Base Administrativa da Guarnição</span>
+        <span class="tagchip">4º Batalhão Logístico</span>
+        <span class="tagchip">2º Batalhão de Polícia de Choque (BM)</span>
+        <span class="tagchip">Guarnição de Itaara (integrada)</span>
+      </div>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted)">Lista ilustrativa. A guarnição do Exército reúne ~22 OMs; a Base Aérea (FAB) e a Brigada Militar (polícia estadual) somam-se à presença militar. O efetivo da Brigada Militar por município não é divulgado. Fonte: Exército / FAB / Brigada Militar.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-top:22px">
+      <h3>Leitura econômica da presença militar</h3>
+      <div class="sub">O que a guarnição representa para a economia da cidade</div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px;line-height:1.6">
+        A presença de <strong>milhares de militares ativos e inativos</strong> injeta uma <strong>folha salarial estável</strong> na economia local mês a mês —
+        renda pouco sensível a ciclos econômicos, que sustenta moradia, comércio, serviços e saúde. Somada à <strong>cidade universitária</strong>, a guarnição
+        ajuda a explicar a <strong>resiliência econômica</strong> de Santa Maria e seu papel de <strong>polo regional</strong> no centro do estado.
+        Os quartéis também movimentam <strong>obras, compras e contratos</strong> e fixam famílias na cidade por gerações.
+        <br><br>
+        <strong>Próxima camada de dados:</strong> efetivo oficial por OM, folha de pagamento militar no município e impacto no PIB de serviços — quando houver fonte pública consolidada.
       </p>
     </div>
   </div>
@@ -1436,6 +1500,16 @@ whenVisible('eduIesChart',async()=>{
     data:{labels:l,datasets:[{data:d,backgroundColor:[C.blue,C.magenta,C.sky,C.green],borderRadius:6,maxBarThickness:90}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' cursos de graduação'}}},
       scales:{y:{grid:{color:C.grid},beginAtZero:true,ticks:{stepSize:30}},x:{grid:{display:false}}}}});
+});
+
+whenVisible('milFamiliaChart',async()=>{
+  const fb={l:['Militares ativos','Inativos (reserva/reformados)','Dependentes'],d:[5274,3949,8777]};
+  const r=await sbRows('militar_familia','ordem');
+  const l=r?r.map(x=>x.categoria):fb.l, d=r?r.map(x=>Number(x.quantidade)):fb.d;
+  new Chart(document.getElementById('milFamiliaChart'),{type:'doughnut',
+    data:{labels:l,datasets:[{data:d,backgroundColor:[C.navy,C.blue,C.gold],borderWidth:0}]},
+    options:{cutout:'60%',plugins:{legend:{position:'bottom',labels:{padding:12,usePointStyle:true,pointStyle:'circle'}},
+      tooltip:{callbacks:{label:c=>c.label+': '+c.raw.toLocaleString('pt-BR')}}}}});
 });
 </script>
 </body>
