@@ -243,6 +243,9 @@
   .admin-body{padding:30px 26px;max-width:1120px;margin:0 auto;color:#dCE7F2}
   .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .acard{background:#251338;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px}
+  /* Cards do admin que só aparecem depois do login */
+  .adm-gated{display:none}
+  .admin.authed .adm-gated{display:block}
   .acard h4{color:#fff;font-size:16px;margin-bottom:4px}
   .acard .desc{color:#B79BD0;font-size:12.5px;margin-bottom:16px}
   .drop{border:2px dashed rgba(167,66,200,.4);border-radius:14px;padding:26px;text-align:center;color:#C9B3DD;font-size:13px;transition:.2s;cursor:pointer}
@@ -1249,7 +1252,7 @@
         </div>
       </div>
 
-      <div class="acard" style="grid-column:1/-1" id="admMidiaCard">
+      <div class="acard adm-gated" style="grid-column:1/-1" id="admMidiaCard">
         <h4>📸 Upload de logo, fotos e vídeos — grava no Supabase</h4>
         <div class="desc">Escolha onde a imagem ou vídeo vai aparecer, selecione o arquivo do seu computador e clique em Enviar. É preciso estar logado no Editor de dados (acima).</div>
         <div id="upLoginAviso" style="color:#E6188D;font-size:13px;margin:8px 0;display:none">Faça login no Editor de dados (acima) para poder enviar arquivos.</div>
@@ -1286,7 +1289,7 @@
         <div id="upPreview" style="margin-top:14px"></div>
       </div>
 
-      <div class="acard" style="grid-column:1/-1">
+      <div class="acard adm-gated" style="grid-column:1/-1">
         <h4>Status dos conectores de dados</h4>
         <div class="desc">Origem de cada indicador e quando foi atualizado. Verde = automático e fresco; amarelo = revisar; cinza = manual.</div>
         <table class="conn">
@@ -1303,7 +1306,7 @@
         </table>
       </div>
 
-      <div class="acard" style="grid-column:1/-1">
+      <div class="acard adm-gated" style="grid-column:1/-1">
         <h4>Editor de indicador manual</h4>
         <div class="desc">Exemplo: capítulo Inovação → "Startups mapeadas".</div>
         <div class="ed-row"><span class="k">Valor</span><input value="125"></div>
@@ -1507,9 +1510,10 @@ async function admEntrar(){
   if(error){admMsg('admMsg','Não foi possível entrar: '+error.message);return;}
   admAbrirEditor();
 }
-async function admSair(){ if(_sb)await _sb.auth.signOut(); document.getElementById('admEditor').style.display='none'; document.getElementById('admLogin').style.display='block'; }
+async function admSair(){ if(_sb)await _sb.auth.signOut(); document.getElementById('admin').classList.remove('authed'); document.getElementById('admEditor').style.display='none'; document.getElementById('admLogin').style.display='block'; }
 
 function admAbrirEditor(){
+  document.getElementById('admin').classList.add('authed');
   document.getElementById('admLogin').style.display='none';
   document.getElementById('admEditor').style.display='block';
   const sel=document.getElementById('admTabela');
