@@ -409,26 +409,76 @@
       <div class="m"><b data-count="1">0</b><span>Aceleradora</span></div>
     </div>
 
-    <div class="subhead reveal">Trilha empreendedora<small>O funil de inovação do Inova Centro, da ideia à escala</small></div>
-    <div class="trilha reveal">
-      <div class="step"><div class="n">1</div><h4>Sensibilização</h4><p>Difusão da cultura de inovação. Ideathons, Finova, Santa Summit.</p></div>
-      <div class="step"><div class="n">2</div><h4>Ideação</h4><p>Prototipagem e modelo de negócio. Startups Start, Eleva Start.</p></div>
-      <div class="step"><div class="n">3</div><h4>Validação</h4><p>Teste do modelo e do mercado. Pré-incubação, Lab Fecomércio.</p></div>
-      <div class="step"><div class="n">4</div><h4>Operação</h4><p>Estruturação da empresa. Incubadoras Pulsar, Itec e Inovatec.</p></div>
-      <div class="step"><div class="n">5</div><h4>Escala</h4><p>Expansão e consolidação. Máquina de Vendas, Startup RS Scale.</p></div>
-    </div>
+    <style>
+        .tr2{display:flex;align-items:flex-end;gap:10px;margin:22px 0 8px;border-bottom:1px solid var(--line)}
+        .tr2 .d{flex:1;min-width:0}
+        .tr2 .d:nth-child(1){padding-bottom:0}
+        .tr2 .d:nth-child(2){padding-bottom:24px}
+        .tr2 .d:nth-child(3){padding-bottom:48px}
+        .tr2 .d:nth-child(4){padding-bottom:72px}
+        .tr2 .d:nth-child(5){padding-bottom:96px}
+        .tr2 .b{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#fff;margin-bottom:12px}
+        .tr2 .d:nth-child(1) .b{background:#A47BC0}
+        .tr2 .d:nth-child(2) .b{background:#8A56AC}
+        .tr2 .d:nth-child(3) .b{background:#7434A0}
+        .tr2 .d:nth-child(4) .b{background:#662382}
+        .tr2 .d:nth-child(5) .b{background:#51AE32}
+        .tr2 .c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px}
+        .tr2 .d:nth-child(5) .c{border-color:#51AE32;border-width:2px}
+        .tr2 .c h4{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin:0 0 5px}
+        .tr2 .c p{font-size:12px;color:var(--muted);line-height:1.55;margin:0}
+        .tr2 .c em{display:block;margin-top:8px;font-style:normal;font-size:11px;font-weight:600;color:#662382}
+        .tr2 .d:nth-child(5) .c em{color:#3d8524}
+        .st2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:22px}
+        .st2 .k{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px 14px;transition:.18s}
+        .st2 .k:hover{border-color:#662382;transform:translateY(-2px)}
+        .st2 .kt{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .st2 .ki{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+        .st2 .ki svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+        .st2 .kn{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;line-height:1}
+        .st2 .kl{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:10px}
+        .st2 .kb{height:4px;border-radius:99px;background:#efe9f4;overflow:hidden}
+        .st2 .kb i{display:block;height:100%;border-radius:99px}
+        .st2 .k1 .ki{background:#eaf6e5;color:#3d8524} .st2 .k1 .kn{color:#3d8524} .st2 .k1 .kb i{width:100%;background:#51AE32}
+        .st2 .k2 .ki{background:#f2eaf7;color:#662382} .st2 .k2 .kn{color:#662382} .st2 .k2 .kb i{width:67%;background:#662382}
+        .st2 .k3 .ki{background:#e7f0fa;color:#1c6396} .st2 .k3 .kn{color:#1c6396} .st2 .k3 .kb i{width:67%;background:#2581C4}
+        .st2 .k4 .ki{background:#fdf2df;color:#a06f04} .st2 .k4 .kn{color:#a06f04} .st2 .k4 .kb i{width:50%;background:#F9B000}
+        .st2 .k5 .ki{background:#eeeaf3;color:#302683} .st2 .k5 .kn{color:#302683} .st2 .k5 .kb i{width:50%;background:#302683}
+        .st2 .k6 .ki{background:#fce7f0;color:#b00055} .st2 .k6 .kn{color:#b00055} .st2 .k6 .kb i{width:33%;background:#E5006D}
+        .st2 .k7 .ki{background:#f2eaf7;color:#8A56AC} .st2 .k7 .kn{color:#8A56AC} .st2 .k7 .kb i{width:33%;background:#8A56AC}
+        .st2 .k8{border-style:dashed;background:transparent}
+        .st2 .k8 .ki{background:#f3f0f6;color:var(--muted)} .st2 .k8 .kn{color:var(--muted);font-size:20px}
+        .st2 .k8 .kl{font-weight:500;color:var(--muted);font-size:11.5px;line-height:1.45}
+        .st2 .k8 .kb i{width:18%;background:#cbbdd6}
+        @media(max-width:900px){
+          .tr2{flex-direction:column;align-items:stretch;gap:0;border-bottom:none}
+          .tr2 .d{padding-bottom:16px!important;display:flex;gap:14px;align-items:flex-start}
+          .tr2 .b{margin-bottom:0;flex:0 0 44px}
+          .tr2 .c{flex:1}
+          .st2{grid-template-columns:1fr 1fr}
+        }
+      </style>
 
-    <div class="subhead reveal">Startups por setor<small>125 empresas mapeadas — setores de maior densidade</small></div>
-    <div class="sectors reveal">
-      <span class="s">AgTech <b>6+</b></span>
-      <span class="s">TI <b>4+</b></span>
-      <span class="s">Gestão de Negócios <b>4+</b></span>
-      <span class="s">FoodTech <b>3+</b></span>
-      <span class="s">Indústria 4.0 <b>3+</b></span>
-      <span class="s">HealthTech <b>2+</b></span>
-      <span class="s">EdTech <b>2+</b></span>
-      <span class="s">FinTech · LegalTech · Energia · Negócios Sociais</span>
-    </div>
+      <div class="subhead reveal">Trilha empreendedora<small>O funil de inovação do Inova Centro, da ideia à escala</small></div>
+      <div class="tr2 reveal">
+        <div class="d"><div class="b">1</div><div class="c"><h4>Sensibilização</h4><p>Difusão da cultura de inovação.</p><em>Ideathons · Finova · Santa Summit</em></div></div>
+        <div class="d"><div class="b">2</div><div class="c"><h4>Ideação</h4><p>Prototipagem e modelo de negócio.</p><em>Startups Start · Eleva Start</em></div></div>
+        <div class="d"><div class="b">3</div><div class="c"><h4>Validação</h4><p>Teste do modelo e do mercado.</p><em>Pré-incubação · Lab Fecomércio</em></div></div>
+        <div class="d"><div class="b">4</div><div class="c"><h4>Operação</h4><p>Estruturação da empresa.</p><em>Pulsar · Itec · Inovatec</em></div></div>
+        <div class="d"><div class="b">5</div><div class="c"><h4>Escala</h4><p>Expansão e consolidação.</p><em>Máquina de Vendas · Startup RS Scale</em></div></div>
+      </div>
+
+      <div class="subhead reveal">Startups por setor<small>125 empresas mapeadas — setores de maior densidade</small></div>
+      <div class="st2 reveal">
+        <div class="k k1"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><path d="M12 20v-8"/><path d="M12 12c0-4 3-7 8-7 0 5-3 8-8 8z"/><path d="M12 15c0-3-2-5-6-5 0 4 2 6 6 6z"/></svg></div><div class="kn">6+</div></div><div class="kl">AgTech</div><div class="kb"><i></i></div></div>
+        <div class="k k2"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg></div><div class="kn">4+</div></div><div class="kl">TI &amp; Software</div><div class="kb"><i></i></div></div>
+        <div class="k k3"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M3 12h18"/></svg></div><div class="kn">4+</div></div><div class="kl">Gestão de Negócios</div><div class="kb"><i></i></div></div>
+        <div class="k k4"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><path d="M4 3v18"/><path d="M4 3h9l-2 5h5l-8 8"/></svg></div><div class="kn">3+</div></div><div class="kl">FoodTech</div><div class="kb"><i></i></div></div>
+        <div class="k k5"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M12 5v4"/><circle cx="12" cy="4" r="1.5"/><path d="M9 14h.01M15 14h.01"/></svg></div><div class="kn">3+</div></div><div class="kl">Indústria 4.0</div><div class="kb"><i></i></div></div>
+        <div class="k k6"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 3 10 2-6 2 3h5"/></svg></div><div class="kn">2+</div></div><div class="kl">HealthTech</div><div class="kb"><i></i></div></div>
+        <div class="k k7"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><path d="M12 4L2 9l10 5 10-5-10-5z"/><path d="M6 12v5c0 1 3 2 6 2s6-1 6-2v-5"/></svg></div><div class="kn">2+</div></div><div class="kl">EdTech</div><div class="kb"><i></i></div></div>
+        <div class="k k8"><div class="kt"><div class="ki"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div><div class="kn">+4</div></div><div class="kl">FinTech · LegalTech · Energia · Negócios Sociais</div><div class="kb"><i></i></div></div>
+      </div>
 
     <div class="eco-cta reveal">
       <div>
