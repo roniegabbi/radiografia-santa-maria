@@ -1524,7 +1524,7 @@ function igOpen(e,user){
   const url=location.href.split('#')[0];
   const txt='Conheça a Radiografia de Santa Maria — dados oficiais da cidade.';
   const w=document.getElementById('shWhats'), f=document.getElementById('shFace'), c=document.getElementById('shCopy');
-  if(w)w.href='https://wa.me/?text='+encodeURIComponent(txt+' '+url);
+  if(w)w.href='https://api.whatsapp.com/send?text='+encodeURIComponent(txt+' '+url);
   if(f)f.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
   if(c)c.addEventListener('click',async()=>{
     try{await navigator.clipboard.writeText(url);}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
