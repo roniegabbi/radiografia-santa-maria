@@ -735,10 +735,10 @@
       <p>74,2 mil vínculos ativos e saldo positivo no 1º trimestre de 2026. <strong>Fonte automatizável: Novo CAGED/MTE (mensal).</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Empregos formais</div><div class="src">Caravela/CAGED · 2025</div></div>
-      <div class="card metric reveal"><span class="chip up">alta</span><div class="num">+704</div><div class="title">Saldo de vagas · 1º tri/2026</div><div class="src">8.893 admissões · 8.189 desligamentos</div></div>
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="724">0</div><div class="title">Saldo em Serviços</div><div class="src">76,2% da geração total</div></div>
-      <div class="card metric reveal"><span class="chip down">−246</span><div class="num">Comércio</div><div class="title">Único setor em déficit</div><div class="src">Ponto de atenção · CAGED</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="empregos_formais" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title" data-chave-rotulo="empregos_formais">Empregos formais</div><div class="src" data-chave-fonte="empregos_formais">Caravela/CAGED · 2025</div></div>
+          <div class="card metric reveal"><span class="chip up">alta</span><div class="num" data-chave="saldo_vagas" data-count="687" data-signo="1">0</div><div class="title" data-chave-rotulo="saldo_vagas">Saldo de vagas · 1º semestre 2026</div><div class="src" data-chave-fonte="saldo_vagas">16.918 admissões · 16.231 desligamentos</div></div>
+          <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="saldo_servicos" data-count="865">0</div><div class="title" data-chave-rotulo="saldo_servicos">Saldo em Serviços</div><div class="src" data-chave-fonte="saldo_servicos">89,5% dos postos criados · CAGED</div></div>
+          <div class="card metric reveal"><span class="chip down">Comércio</span><div class="num" data-chave="saldo_comercio" data-count="-261" data-signo="1">0</div><div class="title" data-chave-rotulo="saldo_comercio">Comércio · maior recuo</div><div class="src" data-chave-fonte="saldo_comercio">Ponto de atenção · CAGED</div></div>
     </div>
 
     <div class="panel reveal" style="margin-top:22px">
@@ -1594,18 +1594,51 @@ function igOpen(e,user){
 
 /* Indicadores do hero: se houver dados no Supabase, sobrescreve os números fixos antes da animação. */
 async function loadIndicadores(){
-  const rows=await sbRows('indicadores','ordem');
-  if(!rows)return;
-  const map={habitantes:0,estudantes:1,idh:2,pib_municipal:3};
-  const nums=document.querySelectorAll('.hero .hstat .num');
-  rows.forEach(r=>{
-    const i=map[r.chave]; if(i===undefined||!nums[i])return;
-    const el=nums[i];
-    el.setAttribute('data-count',r.valor);
-    if(r.prefixo)el.setAttribute('data-prefix',r.prefixo);
-    if(r.sufixo)el.setAttribute('data-suffix',r.sufixo);
-    if(r.casas_decimais)el.setAttribute('data-dec',r.casas_decimais);
-    if(typeof countUp==='function')countUp(el); // re-anima com o valor do banco
+  const rows = await sbRows('indicadores','ordem');
+  if(!rows || !rows.length) return;
+
+  const porChave = Object.fromEntries(rows.map(r => [r.chave, r]));
+
+  document.querySelectorAll('.num[data-chave]').forEach(el => {
+    const r = porChave[el.dataset.chave];
+    if(!r || r.valor === null || r.valor === undefined) return;
+    el.setAttribute('data-count', r.valor);
+    if(r.prefixo) el.setAttribute('data-prefix', r.prefixo);
+    if(r.sufixo)  el.setAttribute('data-suffix', r.sufixo);
+    if(r.casas_decimais !== null && r.casas_decimais !== undefined) el.setAttribute('data-dec', r.casas_decimais);
+    if(el.dataset.signo === '1' && Number(r.valor) > 0){
+      el.setAttribute('data-prefix', (r.prefixo || '') + '+');
+    }
+  });
+
+  document.querySelectorAll('[data-chave-rotulo]').forEach(el => {
+    const r = porChave[el.dataset.chaveRotulo];
+    if(r && r.rotulo) el.textContent = r.rotulo;
+  });
+  document.querySelectorAll('[data-chave-fonte]').forEach(el => {
+    const r = porChave[el.dataset.chaveFonte];
+    if(r && r.fonte) el.textContent = r.fonte;
+  });
+
+  const hero = document.querySelectorAll('.hero .hstat .num:not([data-chave])');
+  if(hero.length){
+    const doHero = rows.filter(r => r.capitulo === 'hero');
+    hero.forEach((el,i) => {
+      const r = doHero[i];
+      if(!r) return;
+      el.setAttribute('data-count', r.valor);
+      if(r.prefixo) el.setAttribute('data-prefix', r.prefixo);
+      if(r.sufixo)  el.setAttribute('data-suffix', r.sufixo);
+      if(r.casas_decimais !== null && r.casas_decimais !== undefined) el.setAttribute('data-dec', r.casas_decimais);
+    });
+  }
+
+  // Re-anima apenas o que ja esta visivel; o resto fica para o observer de scroll
+  document.querySelectorAll('.num[data-chave]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if(r.top < window.innerHeight && r.bottom > 0){
+      try { countUp(el); } catch(e){}
+    }
   });
 }
 loadIndicadores();
