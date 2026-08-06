@@ -363,10 +363,10 @@
       <h1>A radiografia viva da <em>cidade de oportunidades</em></h1>
       <p class="lead">Um retrato em tempo quase real de Santa Maria — inovação, economia, trabalho, saúde e segurança — alimentado por fontes oficiais e curado pela Secretaria de Desenvolvimento Econômico e Inovação.</p>
       <div class="hero-stats">
-        <div class="hstat"><div class="num" data-count="282" data-suffix="k">0</div><div class="lbl">habitantes · IBGE 2025</div></div>
-        <div class="hstat"><div class="num" data-count="37" data-suffix="k">0</div><div class="lbl">estudantes universitários</div></div>
-        <div class="hstat"><div class="num" data-count="0.784" data-dec="3">0</div><div class="lbl">IDH — alto</div></div>
-        <div class="hstat"><div class="num" data-count="10.9" data-dec="1" data-prefix="R$ " data-suffix="bi">0</div><div class="lbl">PIB municipal</div></div>
+        <div class="hstat"><div class="num" data-chave="habitantes" data-count="282" data-suffix="k">0</div><div class="lbl">habitantes · IBGE 2025</div></div>
+        <div class="hstat"><div class="num" data-chave="estudantes" data-count="37" data-suffix="k">0</div><div class="lbl">estudantes universitários</div></div>
+        <div class="hstat"><div class="num" data-chave="idh" data-count="0.784" data-dec="3">0</div><div class="lbl">IDH — alto</div></div>
+        <div class="hstat"><div class="num" data-chave="pib_municipal" data-count="10.9" data-dec="1" data-prefix="R$ " data-suffix="bi">0</div><div class="lbl">PIB municipal</div></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -415,17 +415,17 @@
     </div>
     <div class="grid g4">
       <div class="card metric reveal"><span class="chip gold">ELI Summit 2024</span><div class="num">1º</div><div class="title">Melhor ecossistema do Brasil</div><div class="src">Sebrae/RS · set. 2024</div></div>
-      <div class="card metric reveal"><div class="num" data-count="125">0</div><div class="title">Startups mapeadas</div><div class="src">Inova Centro · 2026</div></div>
-      <div class="card metric reveal"><div class="num" data-count="37">0</div><div class="title">Startups incubadas</div><div class="src">Inova Centro · 2026</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="startups_mapeadas" data-count="125">0</div><div class="title">Startups mapeadas</div><div class="src">Inova Centro · 2026</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="startups_incubadas" data-count="37">0</div><div class="title">Startups incubadas</div><div class="src">Inova Centro · 2026</div></div>
       <div class="card metric reveal"><span class="chip gold">Nível Ouro</span><div class="num">Selo</div><div class="title">Cidade Inteligente 2025</div><div class="src">CSC · Santa Summit</div></div>
     </div>
 
     <div class="subhead reveal">Ambientes de inovação<small>Infraestrutura física que sustenta o ecossistema · Inova Centro</small></div>
     <div class="ministat reveal">
-      <div class="m"><b data-count="3">0</b><span>Parques tecnológicos</span></div>
-      <div class="m"><b data-count="3">0</b><span>Incubadoras · Pulsar, Itec, Inovatec</span></div>
-      <div class="m"><b data-count="5">0</b><span>Espaços de coworking</span></div>
-      <div class="m"><b data-count="1">0</b><span>Aceleradora</span></div>
+      <div class="m"><b data-chave="parques_tec" data-count="3">0</b><span>Parques tecnológicos</span></div>
+      <div class="m"><b data-chave="incubadoras" data-count="3">0</b><span>Incubadoras · Pulsar, Itec, Inovatec</span></div>
+      <div class="m"><b data-chave="coworkings" data-count="5">0</b><span>Espaços de coworking</span></div>
+      <div class="m"><b data-chave="aceleradoras" data-count="1">0</b><span>Aceleradora</span></div>
     </div>
 
     <style>
@@ -525,9 +525,9 @@
         <div class="chart-box"><canvas id="pibChart"></canvas></div>
       </div>
       <div class="grid g2 reveal" style="grid-template-columns:1fr 1fr">
-        <div class="card metric"><div class="num" data-count="42170">0</div><div class="title">Empresas ativas</div><div class="src">Receita Federal · fev. 2026</div></div>
-        <div class="card metric"><span class="chip up">+13,8%</span><div class="num" data-count="3137">0</div><div class="title">Novas empresas (Jan–Abr 26)</div><div class="src">Receita Federal</div></div>
-        <div class="card metric"><div class="num" data-count="40230" data-prefix="R$ ">0</div><div class="title">PIB per capita</div><div class="src">IBGE · 2023</div></div>
+        <div class="card metric"><div class="num" data-chave="empresas_ativas" data-count="42170">0</div><div class="title">Empresas ativas</div><div class="src">Receita Federal · fev. 2026</div></div>
+        <div class="card metric"><span class="chip up">+13,8%</span><div class="num" data-chave="novas_empresas" data-count="3137">0</div><div class="title">Novas empresas (Jan–Abr 26)</div><div class="src">Receita Federal</div></div>
+        <div class="card metric"><div class="num" data-chave="pib_per_capita" data-count="40230" data-prefix="R$ ">0</div><div class="title">PIB per capita</div><div class="src">IBGE · 2023</div></div>
         <div class="card metric"><div class="num">12ª</div><div class="title">Maior PIB do RS</div><div class="src">Prefeitura SM · 2026</div></div>
       </div>
     </div>
@@ -635,10 +635,10 @@
       <p>Santa Maria recebeu o título oficial de <strong>Cidade do Xis</strong>. Mais que um lanche, o xis é memória afetiva e cultura urbana — e move uma cadeia de mais de 2,5 mil empresas. <strong>Fonte: Observatório Econômico · SMDEI (abr. 2026).</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><div class="num" data-count="2591">0</div><div class="title">Empresas do setor de alimentação</div><div class="src">Observatório Econômico · SMDEI</div></div>
-      <div class="card metric reveal"><div class="num" data-count="687">0</div><div class="title">Lanchonetes, casas de chá e sucos</div><div class="src">Atividade nº 1 do setor</div></div>
-      <div class="card metric reveal"><div class="num" data-count="411">0</div><div class="title">Serviços ambulantes / food trucks</div><div class="src">Comida de rua</div></div>
-      <div class="card metric reveal"><div class="num" data-count="300" data-suffix=" mil">0</div><div class="title">Xis vendidos por mês</div><div class="src">Movimenta ~R$ 10 mi/mês</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="xis_empresas_alim" data-count="2591">0</div><div class="title">Empresas do setor de alimentação</div><div class="src">Observatório Econômico · SMDEI</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="xis_lanchonetes" data-count="687">0</div><div class="title">Lanchonetes, casas de chá e sucos</div><div class="src">Atividade nº 1 do setor</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="xis_foodtrucks" data-count="411">0</div><div class="title">Serviços ambulantes / food trucks</div><div class="src">Comida de rua</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="xis_por_mes" data-escala="1000" data-count="300" data-suffix=" mil">0</div><div class="title">Xis vendidos por mês</div><div class="src">Movimenta ~R$ 10 mi/mês</div></div>
     </div>
 
     <div class="grid g2" style="align-items:stretch;margin-top:22px">
@@ -705,7 +705,7 @@
     <div class="ch-head reveal">
       <span class="ch-tag"><span class="bar"></span>Capítulo 03 · Comércio Exterior</span>
       <h2>Potência exportadora do interior gaúcho</h2>
-      <p>Líder estadual em carne bovina fresca e entre os maiores exportadores municipais do Brasil em trigo, arroz e máquinas agrícolas. <strong>Fonte automatizável: MDIC Comex Stat (mensal).</strong></p>
+      <p>Líder estadual em carne bovina fresca e entre os maiores exportadores municipais do Brasil em trigo, arroz e máquinas agrícolas. <strong>Fonte: MDIC Comex Stat (atualização mensal).</strong></p>
     </div>
     <div class="grid g2" style="align-items:stretch">
       <div class="panel reveal">
@@ -731,11 +731,11 @@
   <div class="wrap">
     <div class="ch-head reveal">
       <span class="ch-tag"><span class="bar"></span>Capítulo 04 · Mercado de Trabalho</span>
-      <h2>Emprego formal em expansão</h2>
-      <p>74,2 mil vínculos ativos e saldo positivo no 1º trimestre de 2026. <strong>Fonte automatizável: Novo CAGED/MTE (mensal).</strong></p>
+      <h2>Emprego formal em expansão moderada</h2>
+          <p>74,2 mil vínculos ativos e saldo de 687 postos no 1º semestre de 2026 — crescimento de 8,2% sobre o mesmo período de 2025. <strong>Fonte: Novo CAGED/MTE (atualização mensal).</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="empregos_formais" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title" data-chave-rotulo="empregos_formais">Empregos formais</div><div class="src" data-chave-fonte="empregos_formais">Caravela/CAGED · 2025</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="empregos_formais" data-escala="1000" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div class="title" data-chave-rotulo="empregos_formais">Empregos formais</div><div class="src" data-chave-fonte="empregos_formais">Caravela/CAGED · 2025</div></div>
           <div class="card metric reveal"><span class="chip up">alta</span><div class="num" data-chave="saldo_vagas" data-count="687" data-signo="1">0</div><div class="title" data-chave-rotulo="saldo_vagas">Saldo de vagas · 1º semestre 2026</div><div class="src" data-chave-fonte="saldo_vagas">16.918 admissões · 16.231 desligamentos</div></div>
           <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="saldo_servicos" data-count="865">0</div><div class="title" data-chave-rotulo="saldo_servicos">Saldo em Serviços</div><div class="src" data-chave-fonte="saldo_servicos">89,5% dos postos criados · CAGED</div></div>
           <div class="card metric reveal"><span class="chip down">Comércio</span><div class="num" data-chave="saldo_comercio" data-count="-261" data-signo="1">0</div><div class="title" data-chave-rotulo="saldo_comercio">Comércio · maior recuo</div><div class="src" data-chave-fonte="saldo_comercio">Ponto de atenção · CAGED</div></div>
@@ -768,10 +768,10 @@
       <p>Referência para mais de 1 milhão de habitantes em 45 municípios, com mais de mil leitos e 44 programas de residência médica.</p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><div class="num" data-count="1020" data-suffix="+">0</div><div class="title">Leitos hospitalares</div><div class="src">HUSM + CHAA + HRSM</div></div>
-      <div class="card metric reveal"><div class="num" data-count="1" data-suffix="M+">0</div><div class="title">Habitantes atendidos</div><div class="src">45 municípios de referência</div></div>
-      <div class="card metric reveal"><div class="num" data-count="44">0</div><div class="title">Residências médicas</div><div class="src">COREME/UFSM 2025</div></div>
-      <div class="card metric reveal"><div class="num" data-count="380">0</div><div class="title">Leitos no HUSM</div><div class="src">Maior do interior · Ebserh</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="leitos_total" data-count="1020" data-suffix="+">0</div><div class="title">Leitos hospitalares</div><div class="src">HUSM + CHAA + HRSM</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="habitantes_referencia" data-escala="1000000" data-count="1" data-suffix="M+">0</div><div class="title">Habitantes atendidos</div><div class="src">45 municípios de referência</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="residencias_medicas" data-count="44">0</div><div class="title">Residências médicas</div><div class="src">COREME/UFSM 2025</div></div>
+      <div class="card metric reveal"><div class="num" data-chave="leitos_husm" data-count="380">0</div><div class="title">Leitos no HUSM</div><div class="src">Maior do interior · Ebserh</div></div>
     </div>
   </div>
 </section>
@@ -836,10 +836,10 @@
       <p>Santa Maria fechou 2025 com <strong>179.719 veículos</strong> em circulação — eram 89.231 em 2007. A frota cresceu <strong>101%</strong> enquanto a população subiu apenas 7,2%, sinal de mais renda e consumo. <strong>Fontes: DetranRS / SENATRAN (frota) e Sefaz-RS (IPVA) · atualização mensal/anual.</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="179719">0</div><div class="title">Frota total de veículos</div><div class="src">DetranRS · em circulação · 2025</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="frota_total" data-count="179719">0</div><div class="title">Frota total de veículos</div><div class="src">DetranRS · em circulação · 2025</div></div>
       <div class="card metric reveal"><span class="chip up">+101%</span><div class="num">+90 mil</div><div class="title">Veículos a mais que em 2007</div><div class="src">De 89.231 para 179.719 · a frota dobrou</div></div>
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="99.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Frota tributável · IPVA 2026</div><div class="src">Sefaz-RS · ~55% da frota</div></div>
-      <div class="card metric reveal"><span class="chip up">5º no RS</span><div class="num" data-count="156.1" data-dec="1" data-prefix="R$ " data-suffix=" mi" style="font-size:33px;white-space:nowrap">0</div><div class="title">IPVA 2026 · total no município</div><div class="src">Previsão Sefaz-RS · metade (~R$ 78 mi) à Prefeitura</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="frota_tributavel" data-escala="1000" data-count="99.2" data-dec="1" data-suffix=" mil">0</div><div class="title">Frota tributável · IPVA 2026</div><div class="src">Sefaz-RS · ~55% da frota</div></div>
+      <div class="card metric reveal"><span class="chip up">5º no RS</span><div class="num" data-chave="ipva_total" data-escala="1000000" data-count="156.1" data-dec="1" data-prefix="R$ " data-suffix=" mi" style="font-size:33px;white-space:nowrap">0</div><div class="title">IPVA 2026 · total no município</div><div class="src">Previsão Sefaz-RS · metade (~R$ 78 mi) à Prefeitura</div></div>
     </div>
 
     <div class="grid g2" style="align-items:stretch;margin-top:22px">
@@ -880,9 +880,9 @@
       <p>Santa Maria é a <strong>cidade universitária</strong> do interior gaúcho: abriga a UFSM — <strong>primeira universidade federal criada fora de uma capital</strong> no Brasil — além da Universidade Franciscana (UFN), da Ulbra, do novo campus do IFFar e de dezenas de faculdades. Só a UFSM reúne cerca de <strong>30 mil estudantes</strong> numa cidade de ~282 mil habitantes. <strong>Fontes: UFSM em Números / INEP (Censo da Educação Superior) · atualização anual.</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip up">1 a cada 9 hab.</span><div class="num" data-count="30" data-suffix=" mil">0</div><div class="title">Estudantes na UFSM</div><div class="src">27 mil presencial + 3 mil EAD · 2025</div></div>
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="3">0</div><div class="title">Universidades na cidade</div><div class="src">UFSM (federal), UFN e Ulbra · + IFFar e faculdades</div></div>
-      <div class="card metric reveal"><span class="chip up">+106 pós</span><div class="num" data-count="131">0</div><div class="title">Cursos de graduação · UFSM</div><div class="src">Presencial · 83 bacharelado, 37 licenciatura, 11 tecnólogo</div></div>
+      <div class="card metric reveal"><span class="chip up">1 a cada 9 hab.</span><div class="num" data-chave="estudantes_ufsm" data-escala="1000" data-count="30" data-suffix=" mil">0</div><div class="title">Estudantes na UFSM</div><div class="src">27 mil presencial + 3 mil EAD · 2025</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="universidades" data-count="3">0</div><div class="title">Universidades na cidade</div><div class="src">UFSM (federal), UFN e Ulbra · + IFFar e faculdades</div></div>
+      <div class="card metric reveal"><span class="chip up">+106 pós</span><div class="num" data-chave="cursos_grad_ufsm" data-count="131">0</div><div class="title">Cursos de graduação · UFSM</div><div class="src">Presencial · 83 bacharelado, 37 licenciatura, 11 tecnólogo</div></div>
       <div class="card metric reveal"><span class="chip ph">·</span><div class="num">1ª</div><div class="title">Federal do interior do Brasil</div><div class="src">UFSM · pioneira fora de uma capital</div></div>
     </div>
 
@@ -951,8 +951,8 @@
 
     <div class="grid g4" style="margin-top:22px">
       <div class="card metric reveal"><span class="chip up">Inova Centro</span><div class="num">+100</div><div class="title">Startups ativas</div><div class="src">Ecossistema de inovação da cidade</div></div>
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="3">0</div><div class="title">Parques tecnológicos</div><div class="src">Inclui o SM Tecnoparque</div></div>
-      <div class="card metric reveal"><span class="chip up">Pulsar · 1ª do RS</span><div class="num" data-count="3">0</div><div class="title">Incubadoras de tecnologia</div><div class="src">Pulsar (UFSM): 35 startups incubadas</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="parques_tec" data-count="3">0</div><div class="title">Parques tecnológicos</div><div class="src">Inclui o SM Tecnoparque</div></div>
+      <div class="card metric reveal"><span class="chip up">Pulsar · 1ª do RS</span><div class="num" data-chave="incubadoras" data-count="3">0</div><div class="title">Incubadoras de tecnologia</div><div class="src">Pulsar (UFSM): 35 startups incubadas</div></div>
       <div class="card metric reveal"><span class="chip up">714 laboratórios</span><div class="num" data-count="377">0</div><div class="title">Grupos de pesquisa</div><div class="src">Todas as IES · base de P&amp;D local</div></div>
     </div>
 
@@ -982,10 +982,10 @@
       <p>Santa Maria é historicamente uma <strong>"cidade-quartel"</strong>: sedia o comando da <strong>3ª Divisão de Exército</strong> — a única <strong>Divisão Encouraçada (blindada)</strong> do Exército Brasileiro — e a <strong>6ª Brigada de Infantaria Blindada</strong>, além da <strong>Base Aérea de Santa Maria (FAB)</strong>, uma das principais bases de caça do país. Somando <strong>Exército e Força Aérea</strong>, são cerca de <strong>6,7 mil militares ativos</strong> na cidade; com inativos e dependentes do Exército, a "família militar" passa de <strong>18 mil pessoas</strong>. A cidade abriga ainda unidades da <strong>Brigada Militar</strong> (polícia militar do RS), como o <strong>2º Batalhão de Polícia de Choque</strong> — cujo efetivo por município não é divulgado pela corporação. <strong>Fontes: Comando da 3ª DE / Base Administrativa da Guarnição de Santa Maria / Força Aérea Brasileira · estimativas (não-censitárias).</strong></p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip up">Exército + FAB</span><div class="num" data-count="6674">0</div><div class="title">Militares ativos · Forças Armadas</div><div class="src">≈5.274 do Exército + ~1.400 da Base Aérea</div></div>
-      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-count="22">0</div><div class="title">Organizações militares · Exército</div><div class="src">Quartéis e estabelecimentos na guarnição</div></div>
-      <div class="card metric reveal"><span class="chip up">caça A-1</span><div class="num" data-count="1400" data-prefix="~">0</div><div class="title">Militares na Base Aérea (FAB)</div><div class="src">Ala 4 · esquadrões de caça e reconhecimento</div></div>
-      <div class="card metric reveal"><span class="chip up">com família</span><div class="num" data-count="18" data-suffix=" mil">0</div><div class="title">"Família militar" do Exército</div><div class="src">Ativos + inativos + dependentes</div></div>
+      <div class="card metric reveal"><span class="chip up">Exército + FAB</span><div class="num" data-chave="militares_ativos" data-count="6674">0</div><div class="title">Militares ativos · Forças Armadas</div><div class="src">≈5.274 do Exército + ~1.400 da Base Aérea</div></div>
+      <div class="card metric reveal"><span class="chip ph">·</span><div class="num" data-chave="oms_exercito" data-count="22">0</div><div class="title">Organizações militares · Exército</div><div class="src">Quartéis e estabelecimentos na guarnição</div></div>
+      <div class="card metric reveal"><span class="chip up">caça A-1</span><div class="num" data-chave="militares_basm" data-count="1400" data-prefix="~">0</div><div class="title">Militares na Base Aérea (FAB)</div><div class="src">Ala 4 · esquadrões de caça e reconhecimento</div></div>
+      <div class="card metric reveal"><span class="chip up">com família</span><div class="num" data-chave="familia_militar" data-escala="1000" data-count="18" data-suffix=" mil">0</div><div class="title">"Família militar" do Exército</div><div class="src">Ativos + inativos + dependentes</div></div>
     </div>
 
     <div class="grid g2" style="align-items:stretch;margin-top:22px">
@@ -1048,10 +1048,10 @@
       <p>Santa Maria, a <strong>"Cidade Coração do Rio Grande"</strong>, combina turismo <strong>religioso</strong>, <strong>tradicionalista gaúcho</strong>, <strong>esportivo</strong>, de <strong>eventos</strong>, <strong>gastronômico</strong> e <strong>paleontológico</strong>. É o <strong>berço mundial da Campanha da Mãe Peregrina</strong> (Diácono João Luiz Pozzobon · Santuário de Schoenstatt), hoje em mais de 100 países. O maior fluxo presencial é a <strong>Romaria da Medianeira</strong> (~250 mil fiéis, estimativa de segurança). Cada número abaixo traz a sua <strong>fonte</strong> e, quando se trata de público, é uma <strong>estimativa não-censitária</strong>. <strong>Fontes: PMSM / Sec. de Turismo e Desenvolvimento Rural · Guarda Municipal · Arquidiocese de Santa Maria · Campanha da Mãe Peregrina de Schoenstatt · Maratona Internacional de Santa Maria · 13ª Região Tradicionalista (MTG) · UFSM/CAPPA · ACI Digital.</strong></p>
     </div>
     <div class="grid g5">
-      <div class="card metric reveal"><span class="chip up">religioso</span><div class="num" data-count="250" data-prefix="~" data-suffix=" mil">0</div><div class="title">Romaria da Medianeira</div><div class="src">82ª ed. (2024) · estimativa PMSM/segurança · ACI Digital</div></div>
-      <div class="card metric reveal"><span class="chip gold">rural · gastronômico</span><div class="num" data-count="50" data-prefix="+" >0</div><div class="title">Pátio Rural · expositores</div><div class="src">22ª ed. (2025) · Sec. Turismo + Desenv. Rural (PMSM)</div></div>
-      <div class="card metric reveal"><span class="chip gold">tradicionalista</span><div class="num" data-count="65" data-prefix="~" data-suffix=" mil">0</div><div class="title">Acampamento Farroupilha</div><div class="src">Estimativa · ~25 piquetes · 13ª Região Tradicionalista</div></div>
-      <div class="card metric reveal"><span class="chip up">eventos</span><div class="num" data-count="80" data-prefix="+" data-suffix=" mil">0</div><div class="title">Festival de Balonismo · 4 dias</div><div class="src">abr/2025 · estimativa Guarda Municipal (PMSM)</div></div>
+      <div class="card metric reveal"><span class="chip up">religioso</span><div class="num" data-chave="romaria_medianeira" data-escala="1000" data-count="250" data-prefix="~" data-suffix=" mil">0</div><div class="title">Romaria da Medianeira</div><div class="src">82ª ed. (2024) · estimativa PMSM/segurança · ACI Digital</div></div>
+      <div class="card metric reveal"><span class="chip gold">rural · gastronômico</span><div class="num" data-chave="patio_rural" data-count="50" data-prefix="+" >0</div><div class="title">Pátio Rural · expositores</div><div class="src">22ª ed. (2025) · Sec. Turismo + Desenv. Rural (PMSM)</div></div>
+      <div class="card metric reveal"><span class="chip gold">tradicionalista</span><div class="num" data-chave="acampamento_farr" data-escala="1000" data-count="65" data-prefix="~" data-suffix=" mil">0</div><div class="title">Acampamento Farroupilha</div><div class="src">Estimativa · ~25 piquetes · 13ª Região Tradicionalista</div></div>
+      <div class="card metric reveal"><span class="chip up">eventos</span><div class="num" data-chave="balonismo" data-escala="1000" data-count="80" data-prefix="+" data-suffix=" mil">0</div><div class="title">Festival de Balonismo · 4 dias</div><div class="src">abr/2025 · estimativa Guarda Municipal (PMSM)</div></div>
       <div class="card metric reveal"><span class="chip up">esportivo</span><div class="num" data-count="3.5" data-dec="1" data-suffix=" mil">0</div><div class="title">Maratona Internacional</div><div class="src">3ª ed. (2025) · 15 estados + 4 países · 144 cidades</div></div>
     </div>
 
@@ -1140,10 +1140,10 @@
       <p>Quantas <strong>empresas com CNPJ ativo</strong> existem em Santa Maria em cada ramo do turismo. Os 4 cartões abaixo mostram o <strong>total de empresas por segmento</strong>; o gráfico ao lado abre cada segmento por tipo de atividade (CNAE). Base: <strong>Dados Públicos do CNPJ — Receita Federal</strong>, via Econodata (atualização <strong>maio/2026</strong>). Inclui microempreendedores (MEI).</p>
     </div>
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip up">1 · agências</span><div class="num" data-count="85">0</div><div class="title">empresas de agências de viagem</div><div class="src">CNAE 7911-2/00</div></div>
-      <div class="card metric reveal"><span class="chip gold">2 · hospedagem</span><div class="num" data-count="47">0</div><div class="title">hotéis, pousadas, pensões e campings</div><div class="src">CNAE 5510 + 5590</div></div>
-      <div class="card metric reveal"><span class="chip up">3 · alimentação</span><div class="num" data-count="1241">0</div><div class="title">restaurantes, lanchonetes e bares</div><div class="src">CNAE 5611 (3 atividades)</div></div>
-      <div class="card metric reveal"><span class="chip gold">4 · atrações</span><div class="num" data-count="7">0</div><div class="title">museus e sítios culturais (com CNPJ)</div><div class="src">CNAE 9102 / 9103</div></div>
+      <div class="card metric reveal"><span class="chip up">1 · agências</span><div class="num" data-chave="tur_agencias" data-count="85">0</div><div class="title">empresas de agências de viagem</div><div class="src">CNAE 7911-2/00</div></div>
+      <div class="card metric reveal"><span class="chip gold">2 · hospedagem</span><div class="num" data-chave="tur_hospedagem" data-count="47">0</div><div class="title">hotéis, pousadas, pensões e campings</div><div class="src">CNAE 5510 + 5590</div></div>
+      <div class="card metric reveal"><span class="chip up">3 · alimentação</span><div class="num" data-chave="tur_alimentacao" data-count="1241">0</div><div class="title">restaurantes, lanchonetes e bares</div><div class="src">CNAE 5611 (3 atividades)</div></div>
+      <div class="card metric reveal"><span class="chip gold">4 · atrações</span><div class="num" data-chave="tur_atracoes" data-count="7">0</div><div class="title">museus e sítios culturais (com CNPJ)</div><div class="src">CNAE 9102 / 9103</div></div>
     </div>
 
     <div class="grid g2" style="align-items:stretch;margin-top:22px">
@@ -1196,9 +1196,9 @@
       <h3>Emprego e contexto do mercado de trabalho</h3>
       <div class="sub">Emprego formal no município · fontes oficiais (CAGED/RAIS)</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:18px">
-        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empregos formais no município · todos os setores (RAIS, abr/2026)</div></div>
-        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-count="3.6" data-dec="1" data-prefix="R$ " data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">remuneração média mensal · vínculos formais (2026)</div></div>
-        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--green)" data-count="297" data-prefix="+">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">saldo de empregos · jan–fev 2026 (município)</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-chave="tur_empregos" data-escala="1000" data-count="74.2" data-dec="1" data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empregos formais no município · todos os setores (RAIS, abr/2026)</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-chave="tur_remuneracao" data-escala="1000" data-count="3.6" data-dec="1" data-prefix="R$ " data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">remuneração média mensal · vínculos formais (2026)</div></div>
+        <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--green)" data-chave="tur_saldo" data-count="297" data-prefix="+">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">saldo de empregos · jan–fev 2026 (município)</div></div>
       </div>
       <p style="margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.6"><strong>Importante:</strong> os números acima são do <strong>município inteiro</strong> (todos os setores), atualizados para <strong>2026</strong>: <strong>74,2 mil</strong> vínculos formais, remuneração média <strong>R$ 3,6 mil</strong> e <strong>saldo +297</strong> (jan–fev/2026), via CAGED/RAIS (atualização abr/2026). O Brasil <strong>não divulga em base aberta o emprego formal isolado do turismo por cidade</strong>, e "vagas em aberto" também não existem de forma consolidada por CNAE/município. Para uma contagem <strong>exata de empregos só nas empresas de turismo</strong>, é necessário processar os microdados <strong>RAIS/CAGED por CNAE</strong> (ou o relatório de funcionários da Econodata Premium) — posso gerar esse cálculo se o arquivo for colocado na pasta do projeto.</p>
     </div>
@@ -1219,10 +1219,10 @@
     </div>
 
     <div class="grid g4">
-      <div class="card metric reveal"><span class="chip up">equipamentos</span><div class="num" data-count="16">0</div><div class="title">museus e espaços museológicos</div><div class="src">Roteiro oficial · Sistema Municipal de Museus (PMSM, 2004)</div></div>
-      <div class="card metric reveal"><span class="chip gold">fomento</span><div class="num" data-count="3.9" data-dec="1" data-prefix="R$ " data-suffix=" mi">0</div><div class="title">fomento federal à cultura (2023–24)</div><div class="src">Lei Paulo Gustavo + PNAB/Lei Aldir Blanc</div></div>
-      <div class="card metric reveal"><span class="chip up">patrimônio</span><div class="num" data-count="2" data-suffix="º">0</div><div class="title">maior acervo Art Déco contínuo do mundo</div><div class="src">Av. Rio Branco · atrás só de Ocean Drive (Miami)</div></div>
-      <div class="card metric reveal"><span class="chip gold">economia criativa</span><div class="num" data-count="82">0</div><div class="title">empreendedoras formadas no LabCriativo (2025)</div><div class="src">PMSM + SMDEI + Sebrae RS</div></div>
+      <div class="card metric reveal"><span class="chip up">equipamentos</span><div class="num" data-chave="museus" data-count="16">0</div><div class="title">museus e espaços museológicos</div><div class="src">Roteiro oficial · Sistema Municipal de Museus (PMSM, 2004)</div></div>
+      <div class="card metric reveal"><span class="chip gold">fomento</span><div class="num" data-chave="fomento_cultura" data-escala="1000000" data-count="3.9" data-dec="1" data-prefix="R$ " data-suffix=" mi">0</div><div class="title">fomento federal à cultura (2023–24)</div><div class="src">Lei Paulo Gustavo + PNAB/Lei Aldir Blanc</div></div>
+      <div class="card metric reveal"><span class="chip up">patrimônio</span><div class="num" data-chave="artdeco" data-count="2" data-suffix="º">0</div><div class="title">maior acervo Art Déco contínuo do mundo</div><div class="src">Av. Rio Branco · atrás só de Ocean Drive (Miami)</div></div>
+      <div class="card metric reveal"><span class="chip gold">economia criativa</span><div class="num" data-chave="labcriativo" data-count="82">0</div><div class="title">empreendedoras formadas no LabCriativo (2025)</div><div class="src">PMSM + SMDEI + Sebrae RS</div></div>
     </div>
 
     <div class="grid g2" style="align-items:stretch;margin-top:22px">
@@ -1230,7 +1230,7 @@
         <h3>Equipamentos culturais: o que a cidade tem</h3>
         <div class="sub">Museus, teatro e bibliotecas · rede pública e afiliada</div>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:18px">
-          <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-count="16">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">museus e espaços museológicos no roteiro oficial</div></div>
+          <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-chave="museus" data-count="16">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">museus e espaços museológicos no roteiro oficial</div></div>
           <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--magenta)" data-count="45" data-suffix=" mil">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">obras na Biblioteca Pública Henrique Bastide (8 mil associados)</div></div>
           <div style="flex:1;min-width:150px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-count="135" data-suffix=" anos">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">do Theatro Treze de Maio (1890), um dos mais antigos do RS</div></div>
         </div>
@@ -1251,9 +1251,9 @@
         <h3>Empresas da cultura: quantas têm CNPJ na cidade</h3>
         <div class="sub">Empresas ativas por CNAE cultural · base Receita Federal (mai/2026)</div>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:18px">
-          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-count="345">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empresas de atividades artísticas, criativas e de espetáculos (CNAE 90)</div></div>
-          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--magenta)" data-count="7">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empresas ligadas ao patrimônio cultural e ambiental (CNAE 91)</div></div>
-          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-count="4">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">maior polo de atividades artísticas do RS, atrás só de Porto Alegre, Caxias e Pelotas</div></div>
+          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--blue)" data-chave="emp_artistas" data-count="345">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empresas de atividades artísticas, criativas e de espetáculos (CNAE 90)</div></div>
+          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--magenta)" data-chave="emp_patrimonio" data-count="7">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">empresas ligadas ao patrimônio cultural e ambiental (CNAE 91)</div></div>
+          <div style="flex:1;min-width:140px"><div class="num" style="font-family:'Sora';font-weight:800;font-size:30px;color:var(--gold)" data-chave="rank_cultura" data-count="4">0</div><div style="font-size:13px;color:var(--muted);font-weight:600">maior polo de atividades artísticas do RS, atrás só de Porto Alegre, Caxias e Pelotas</div></div>
         </div>
         <p style="margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.6">Em atividades artísticas, criativas e de espetáculos (CNAE 90 — música, artes cênicas, criação artística, gestão de espaços), Santa Maria reúne <strong>345 empresas ativas</strong>, a <strong>4ª maior concentração do estado</strong> (Porto Alegre 2.666, Caxias 513, Pelotas 348). Outras <strong>7</strong> atuam em patrimônio cultural/ambiental (CNAE 91).</p>
       </div>
@@ -1599,15 +1599,22 @@ async function loadIndicadores(){
 
   const porChave = Object.fromEntries(rows.map(r => [r.chave, r]));
 
-  document.querySelectorAll('.num[data-chave]').forEach(el => {
+  // O banco fornece o VALOR; o HTML manda na APRESENTACAO.
+  // data-escala converte a unidade de armazenamento para a de exibicao (ex.: 250000 -> 250 mil).
+  document.querySelectorAll('[data-chave]').forEach(el => {
     const r = porChave[el.dataset.chave];
     if(!r || r.valor === null || r.valor === undefined) return;
-    el.setAttribute('data-count', r.valor);
-    if(r.prefixo) el.setAttribute('data-prefix', r.prefixo);
-    if(r.sufixo)  el.setAttribute('data-suffix', r.sufixo);
-    if(r.casas_decimais !== null && r.casas_decimais !== undefined) el.setAttribute('data-dec', r.casas_decimais);
+
+    const escala = Number(el.dataset.escala || 1) || 1;
+    el.setAttribute('data-count', Number(r.valor) / escala);
+
+    // so herda do banco o que o card nao declarou
+    if(!el.hasAttribute('data-prefix') && r.prefixo) el.setAttribute('data-prefix', r.prefixo);
+    if(!el.hasAttribute('data-suffix') && r.sufixo)  el.setAttribute('data-suffix', r.sufixo);
+    if(!el.hasAttribute('data-dec') && r.casas_decimais) el.setAttribute('data-dec', r.casas_decimais);
+
     if(el.dataset.signo === '1' && Number(r.valor) > 0){
-      el.setAttribute('data-prefix', (r.prefixo || '') + '+');
+      el.setAttribute('data-prefix', (el.getAttribute('data-prefix') || '') .replace(/\+$/,'') + '+');
     }
   });
 
@@ -1634,7 +1641,7 @@ async function loadIndicadores(){
   }
 
   // Re-anima apenas o que ja esta visivel; o resto fica para o observer de scroll
-  document.querySelectorAll('.num[data-chave]').forEach(el => {
+  document.querySelectorAll('[data-chave]').forEach(el => {
     const r = el.getBoundingClientRect();
     if(r.top < window.innerHeight && r.bottom > 0){
       try { countUp(el); } catch(e){}
