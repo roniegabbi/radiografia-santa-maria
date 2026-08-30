@@ -1330,7 +1330,7 @@
         <p style="margin-top:8px;font-size:14px">Iniciativa da Secretaria de Município de Desenvolvimento Econômico e Inovação — Prefeitura de Santa Maria, RS.</p>
         <p class="foot-sources">Fontes: IBGE · MDIC Comex Stat · CAGED/MTE · Receita Federal · SSP-RS · Sebrae/RS · UFSM/InovaTec · Ebserh · StartupBlink · QS · Robert Half · Expatistan — 2024–2026.</p>
         <p id="foot-visitas" style="margin-top:16px;font-size:12.5px;color:#7FA3C4;display:none">
-          <span id="visitas-total" style="color:#fff;font-weight:600">0</span> visitas desde 30 de agosto de 2026
+          <span id="visitas-total" style="color:#fff;font-weight:600">0</span> <span id="visitas-rotulo">visitas</span> desde 30 de agosto de 2026
         </p>
       </div>
       <div class="foot-cols">
@@ -2053,6 +2053,8 @@ whenVisible('milFamiliaChart',async()=>{
       var el=document.getElementById("visitas-total"), box=document.getElementById("foot-visitas");
       if(!el||!box||n==null) return;
       el.textContent=Number(n).toLocaleString("pt-BR");
+      var rot=document.getElementById("visitas-rotulo");
+      if(rot) rot.textContent=(Number(n)===1?"visita":"visitas");
       box.style.display="block";
     }
     async function iniciar(){
