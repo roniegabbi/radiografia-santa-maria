@@ -1329,6 +1329,9 @@
         <h3 style="color:#fff;font-size:20px">Radiografia de Santa Maria</h3>
         <p style="margin-top:8px;font-size:14px">Iniciativa da Secretaria de Município de Desenvolvimento Econômico e Inovação — Prefeitura de Santa Maria, RS.</p>
         <p class="foot-sources">Fontes: IBGE · MDIC Comex Stat · CAGED/MTE · Receita Federal · SSP-RS · Sebrae/RS · UFSM/InovaTec · Ebserh · StartupBlink · QS · Robert Half · Expatistan — 2024–2026.</p>
+        <p id="foot-visitas" style="margin-top:16px;font-size:12.5px;color:#7FA3C4;display:none">
+          <span id="visitas-total" style="color:#fff;font-weight:600">0</span> visitas desde 30 de agosto de 2026
+        </p>
       </div>
       <div class="foot-cols">
         <div>
@@ -2045,6 +2048,25 @@ whenVisible('milFamiliaChart',async()=>{
 </script>
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/insights/script.js">
+/* ===== Contador publico de visitas (Supabase) ===== */
+(function(){
+  function pintar(n){
+    var el=document.getElementById("visitas-total"), box=document.getElementById("foot-visitas");
+    if(!el||!box||n==null) return;
+    el.textContent=Number(n).toLocaleString("pt-BR");
+    box.style.display="block";
+  }
+  async function iniciar(){
+    if(typeof _sb==="undefined"||!_sb) return;
+    var total=null, nova=true;
+    try{ nova=!sessionStorage.getItem("rsm_visita"); if(nova) sessionStorage.setItem("rsm_visita","1"); }catch(e){ nova=true; }
+    try{ if(nova){ var r=await _sb.rpc("registrar_visita"); if(!r.error) total=r.data; } }catch(e){}
+    try{ if(total==null){ var l=await _sb.from("visitas_contador").select("total").eq("id",1).single(); if(!l.error&&l.data) total=l.data.total; } }catch(e){}
+    pintar(total);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",iniciar); else iniciar();
+})();
+</script>
 </body>
 </html>
