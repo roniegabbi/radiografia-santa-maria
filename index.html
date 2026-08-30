@@ -2046,27 +2046,28 @@ whenVisible('milFamiliaChart',async()=>{
   });
 })();
 </script>
+  <!-- Contador publico de visitas -->
+  <script>
+  (function(){
+    function pintar(n){
+      var el=document.getElementById("visitas-total"), box=document.getElementById("foot-visitas");
+      if(!el||!box||n==null) return;
+      el.textContent=Number(n).toLocaleString("pt-BR");
+      box.style.display="block";
+    }
+    async function iniciar(){
+      if(typeof _sb==="undefined"||!_sb) return;
+      var total=null, nova=true;
+      try{ nova=!sessionStorage.getItem("rsm_visita"); if(nova) sessionStorage.setItem("rsm_visita","1"); }catch(e){ nova=true; }
+      try{ if(nova){ var r=await _sb.rpc("registrar_visita"); if(!r.error) total=r.data; } }catch(e){}
+      try{ if(total==null){ var l=await _sb.from("visitas_contador").select("total").eq("id",1).single(); if(!l.error&&l.data) total=l.data.total; } }catch(e){}
+      pintar(total);
+    }
+    if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",iniciar); else iniciar();
+  })();
+  </script>
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-  <script defer src="/_vercel/insights/script.js">
-/* ===== Contador publico de visitas (Supabase) ===== */
-(function(){
-  function pintar(n){
-    var el=document.getElementById("visitas-total"), box=document.getElementById("foot-visitas");
-    if(!el||!box||n==null) return;
-    el.textContent=Number(n).toLocaleString("pt-BR");
-    box.style.display="block";
-  }
-  async function iniciar(){
-    if(typeof _sb==="undefined"||!_sb) return;
-    var total=null, nova=true;
-    try{ nova=!sessionStorage.getItem("rsm_visita"); if(nova) sessionStorage.setItem("rsm_visita","1"); }catch(e){ nova=true; }
-    try{ if(nova){ var r=await _sb.rpc("registrar_visita"); if(!r.error) total=r.data; } }catch(e){}
-    try{ if(total==null){ var l=await _sb.from("visitas_contador").select("total").eq("id",1).single(); if(!l.error&&l.data) total=l.data.total; } }catch(e){}
-    pintar(total);
-  }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",iniciar); else iniciar();
-})();
-</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
